@@ -6,6 +6,9 @@ import {
   ToastController,
   PopoverController,
   ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { PostProvider } from '../../../providers/post-provider';
+import { Storage } from '@ionic/storage';
 
 // Modals
 import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.page';
@@ -23,19 +26,38 @@ export class HomeResultsPage {
   yourLocation = '123 Test Street';
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
 
+  username: string;
+  anggota:any;
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public popoverCtrl: PopoverController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public toastCtrl: ToastController
+    private router: Router,
+    private postPvdr: PostProvider,
+    public toastCtrl : ToastController,
+    private storage: Storage
   ) {
 
   }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
+    this.storage.get('session_storage').then((res)=>{
+      this.anggota = res;
+      this.username = this.anggota.username;
+    })
+  }
+
+  async prosesLogout(){
+    this.storage.clear();
+    this.router.navigate(['/login']);
+    const toast = await this.toastCtrl.create({
+      message: 'Logout successful',
+      duration: 2000
+    });
+    toast.present();
   }
 
   settings() {
@@ -96,14 +118,6 @@ export class HomeResultsPage {
     return await modal.present();
   }
 
-  async notifications(ev: any) {
-    const popover = await this.popoverCtrl.create({
-      component: NotificationsComponent,
-      event: ev,
-      animated: true,
-      showBackdrop: true
-    });
-    return await popover.present();
-  }
+  
 
 }
