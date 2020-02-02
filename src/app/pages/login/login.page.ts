@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { PostProvider } from '../../../providers/post-provider';
+import { ToastController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -8,85 +10,67 @@ import { NavController, MenuController, ToastController, AlertController, Loadin
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  public onLoginForm: FormGroup;
+  
+  username: string = "";
+  password: string = "";  
 
   constructor(
-    public navCtrl: NavController,
-    public menuCtrl: MenuController,
-    public toastCtrl: ToastController,
-    public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController,
-    private formBuilder: FormBuilder
+    private router: Router,
+    private postPvdr: PostProvider,
+    public toastCtrl : ToastController,
+    private storage: Storage
   ) { }
 
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
-  }
+  
 
   ngOnInit() {
-
-    this.onLoginForm = this.formBuilder.group({
-      'email': [null, Validators.compose([
-        Validators.required
-      ])],
-      'password': [null, Validators.compose([
-        Validators.required
-      ])]
-    });
-  }
-
-  async forgotPass() {
-    const alert = await this.alertCtrl.create({
-      header: 'Forgot Password?',
-      message: 'Enter you email address to send a reset link password.',
-      inputs: [
-        {
-          name: 'email',
-          type: 'email',
-          placeholder: 'Email'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Confirm',
-          handler: async () => {
-            const loader = await this.loadingCtrl.create({
-              duration: 2000
-            });
-
-            loader.present();
-            loader.onWillDismiss().then(async l => {
-              const toast = await this.toastCtrl.create({
-                showCloseButton: true,
-                message: 'Email was sended successfully.',
-                duration: 3000,
-                position: 'bottom'
-              });
-
-              toast.present();
-            });
-          }
-        }
-      ]
-    });
-
-    await alert.present();
   }
 
   // // //
-  goToRegister() {
-    this.navCtrl.navigateRoot('/register');
+  formRegister() {
+    this.router.navigate(['/register']);
+    //this.navCtrl.navigateRoot('/register');
   }
 
-  goToHome() {
-    this.navCtrl.navigateRoot('/tabs/home');
-  }
+  async prosesLogin(){
+    if(this.username != "" && this.password != ""){     
+      console.log("username" + this.username);
+      console.log("Password" + this.password);
+      let body = {
+        username: this.username,
+        password: this.password,
+        aksi: 'login'
+      };
+      this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{
+        var alertmsg = data.msg;
+        if(data.success){
+          // Create session storage
+          this.storage.set('session_storage', data.result);
+          this.router.navigate(['/tabs/home']);
+          const toast = await this.toastCtrl.create({
+            message: 'Login successful',
+            duration: 2000
+          });
+          toast.present();
+          this.username="";
+          this.password = "";
+          console.log(data);
+        }else{
+          const toast = await this.toastCtrl.create({
+            message: alertmsg,
+            duration: 2000
+          });
+          toast.present();
+        }
+      });
 
+    }else{
+      const toast = await this.toastCtrl.create({
+        message: 'Username or password invalid',
+        duration: 2000
+      });
+      toast.present();
+    }
+  }
 }
+
