@@ -1,0 +1,44 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    },
+    "cordova-plugin-filepath": {
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    }
+  },
+  "dependent_plugins": {}
+}

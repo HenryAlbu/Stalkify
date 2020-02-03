@@ -1,15 +1,9 @@
-<ion-content padding class="animated fadeIn login auth-page">
-  <div class="theme-bg"></div>
-  <div class="auth-content">
+<ion-content padding class="auth-page">  
+  <div class="login-page">
 
     <!-- Logo -->
-    <div padding-horizontal text-center class="animated fadeInDown">
-      <div class="logo"></div>      
-    </div>
-
+    <div class="logo"></div>      
     
-   
-
     <!-- Username -->
     <ion-item no-padding class="animated fadeInUp">
       <ion-label position="floating">
@@ -31,15 +25,15 @@
     
 
     <!-- Sign In Button -->
-    <div>
-      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="prosesLogin()" tappable>
+    <div class="space-top">
+      <ion-button  color="secondary" (click)="prosesLogin()" expand="block">
         <ion-icon name="log-in"></ion-icon>
         Signin
       </ion-button>   
     </div>
 
     <!-- Sign Up Button -->
-    <div text-center margin-top>
+    <div text-center class="space-top">
       <span (click)="formRegister()" class="paz" tappable>
         <ion-text color="light">
           New here? <strong>Sign Up</strong>

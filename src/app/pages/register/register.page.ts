@@ -23,6 +23,7 @@ export class RegisterPage implements OnInit {
   images = [];
   username: string = "";
   password: string = "";
+  userPhoto: string = "";
   confirm_password: string = "";
 
   constructor(
@@ -56,7 +57,7 @@ export class RegisterPage implements OnInit {
         for (let img of arr) {
           let filePath = this.file.dataDirectory + img;
           let resPath = this.pathForImage(filePath);
-          this.images.push({ name: img, path: resPath, filePath: filePath });
+          this.images.push({ name: img, path: resPath, filePath: filePath });          
         }
       }
     });
@@ -81,33 +82,16 @@ export class RegisterPage implements OnInit {
   }
  
   async selectImage() {
-      const actionSheet = await this.actionSheetController.create({
-          header: "Select Image source",
-          buttons: [{
-                  text: 'Load from Library',
-                  handler: () => {
-                      this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
-                  }
-              },
-              {
-                  text: 'Use Camera',
-                  handler: () => {
-                      this.takePicture(this.camera.PictureSourceType.CAMERA);
-                  }
-              },
-              {
-                  text: 'Cancel',
-                  role: 'cancel'
-              }
-          ]
-      });
-      await actionSheet.present();
+    this.takePicture(this.camera.PictureSourceType.CAMERA);
   }
    
   takePicture(sourceType: PictureSourceType) {
       var options: CameraOptions = {
           quality: 100,
           sourceType: sourceType,
+          targetHeight: 500,
+          targetWidth: 500,
+          cameraDirection: 1,
           saveToPhotoAlbum: false,
           correctOrientation: true
       };
@@ -118,12 +102,12 @@ export class RegisterPage implements OnInit {
                   .then(filePath => {
                       let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
                       let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-                      this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+                      this.copyFileToLocalDir(correctPath, currentName, this.createFileName());                      
                   });
           } else {
               var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
               var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-              this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+              this.copyFileToLocalDir(correctPath, currentName, this.createFileName());              
           }
       });
    
@@ -133,6 +117,7 @@ export class RegisterPage implements OnInit {
     var d = new Date(),
         n = d.getTime(),
         newFileName = n + ".jpg";
+        this.userPhoto = newFileName;
     return newFileName;
 }
  
@@ -170,6 +155,7 @@ updateStoredImages(name) {
 }
 
 deleteImage(imgEntry, position) {
+  
   this.images.splice(position, 1);
 
   this.storage.get(STORAGE_KEY).then(images => {
@@ -184,6 +170,24 @@ deleteImage(imgEntry, position) {
       });
   });
 }
+
+selectdeleteImage(imgEntry, position) {
+  this.images.splice(position, 1);
+
+  this.storage.get(STORAGE_KEY).then(images => {
+      let arr = JSON.parse(images);
+      let filtered = arr.filter(name => name != imgEntry.name);
+      this.storage.set(STORAGE_KEY, JSON.stringify(filtered));
+
+      var correctPath = imgEntry.filePath.substr(0, imgEntry.filePath.lastIndexOf('/') + 1);
+
+      this.file.removeFile(correctPath, imgEntry.name).then(res => {
+          this.presentToast('File removed.');
+      });
+  });
+  this.takePicture(this.camera.PictureSourceType.CAMERA);
+}
+
 startUpload(imgEntry) {
   this.file.resolveLocalFilesystemUrl(imgEntry.filePath)
       .then(entry => {
@@ -209,11 +213,11 @@ readFile(file: any) {
 
 async uploadImageData(formData: FormData) {
   const loading = await this.loadingController.create({
-      message: 'Uploading image...',
+      message: 'Gucci',
   });
   await loading.present();
 
-  this.http.post("http://localhost:8888/upload.php", formData)
+  this.http.post("http://spontadeal.com/stalkify/upload/upload.php", formData)
       .pipe(
           finalize(() => {
               loading.dismiss();
@@ -235,7 +239,7 @@ async uploadImageData(formData: FormData) {
 
   // Makes sure all feilds are filled in register form
   // If form is ok, send data to api
-  async prosesRegister(){
+  async prosesRegister(imgEntry){
     if(this.username==""){
       const toast = await this.toastCtrl.create({
         message: "Username is required",
@@ -255,9 +259,11 @@ async uploadImageData(formData: FormData) {
       });
       toast.present();
     }else{
+      this.startUpload(imgEntry);
       let body = {
         username: this.username,
         password: this.password,
+        userPhoto: this.userPhoto,
         aksi: 'register'
       };
       this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{

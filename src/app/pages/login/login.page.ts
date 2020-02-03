@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
         password: this.password,
         aksi: 'login'
       };
-      this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{
+      this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{        
         var alertmsg = data.msg;
         if(data.success){
           // Create session storage
