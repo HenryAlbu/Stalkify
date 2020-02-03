@@ -30,7 +30,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     }).catch(() => {});
-
+    
     this.storage.get('session_storage').then((res)=>{
       if(res != null){
         this.router.navigate(['/tabs/home']);

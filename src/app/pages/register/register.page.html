@@ -1,23 +1,50 @@
-<ion-content padding class="animated fadeIn login auth-page">
-  <div class="theme-bg"></div>
-  <div class="auth-content">
+<ion-content padding class="auth-page">  
+  <div class="register-page">
 
-    <!-- Logo -->
-    <div padding-horizontal text-center class="animated fadeInDown">
-      <div class="logo"></div>
-      <h4 no-margin>
-        <ion-text color="light" class="fw700">
-          Ionic 4 Start Theme
-        </ion-text>
-      </h4>
+    <!-- IMAGE UPLOAD -->  
+    <ion-grid>
+          <ion-row> 
+            <ion-col>     
+              <ion-avatar *ngFor="let img of images; index as pos">
+                <img [src]="img.path" /> 
+              </ion-avatar>        
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <!-- IF THERE IS AN IMAGE -->
+    <div *ngFor="let img of images; index as pos">
+      <ion-grid>
+          <ion-row> 
+            <ion-col>
+              <ion-button color="secondary" (click)="selectdeleteImage(img, pos)" expand="block">RETAKE</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button color="secondary" (click)="deleteImage(img, pos)" expand="block">DELETE</ion-button>             
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </div>    
+
+
+    <!-- IF THERE IS NO IMAGE -->
+    <div *ngIf="images.length == 0">
+      <ion-avatar>
+        <ion-img src="assets/img/user.png"></ion-img>
+      </ion-avatar>  
+      <div class="space-top"></div>     
+      <ion-button color="secondary" (click)="selectImage()" expand="block">
+        <ion-icon slot="start" name="camera"></ion-icon>
+          Add Profile Image
+      </ion-button>
+      <p> Your profile image will be the image used when you are chosen</p>
     </div>
 
-    
    
+
 
     <!-- Username -->
     <ion-item no-padding class="animated fadeInUp">
-      <ion-label position="floating">
+      <ion-label color="secondary" position="floating">
         <ion-icon name="mail" item-start></ion-icon>
         Username
       </ion-label>
@@ -44,16 +71,20 @@
     </ion-item>      
     
 
-    <!-- Sign In Button -->
-    <div>
-      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="prosesRegister()" tappable>
-        <ion-icon name="log-in"></ion-icon>
-        Register
-      </ion-button>   
+    <!-- Register Button -->
+    <section class="space-top">      
+    <div *ngFor="let img of images; index as pos">  
+      <ion-button color="secondary" (click)="prosesRegister(img)" expand="block">Register</ion-button>
     </div>
 
+    <div *ngIf="images.length == 0">
+      <ion-button color="secondary" expand="block" disabled>Register</ion-button>
+    </div>
+    </section>
+    
+
     <!-- Sign Up Button -->
-    <div text-center margin-top>
+    <div text-center class="space-top">
       <span (click)="formLogin()" class="paz" tappable>
         <ion-text color="light">
           Whoops, <strong>I already have an account</strong>
