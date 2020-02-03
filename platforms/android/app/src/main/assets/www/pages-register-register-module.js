@@ -63,7 +63,7 @@ var RegisterPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content padding class=\"auth-page\">  \r\n  <div class=\"register-page\">\r\n\r\n    <!-- IMAGE UPLOAD -->  \r\n    <ion-grid>\r\n          <ion-row> \r\n            <ion-col>     \r\n              <ion-avatar *ngFor=\"let img of images; index as pos\">\r\n                <img [src]=\"img.path\" /> \r\n              </ion-avatar>        \r\n            </ion-col>\r\n        </ion-row>\r\n    </ion-grid>\r\n    <!-- IF THERE IS AN IMAGE -->\r\n    <div *ngFor=\"let img of images; index as pos\">\r\n      <ion-grid>\r\n          <ion-row> \r\n            <ion-col>\r\n              <ion-button color=\"secondary\" (click)=\"selectdeleteImage(img, pos)\" expand=\"block\">RETAKE</ion-button>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-button color=\"secondary\" (click)=\"deleteImage(img, pos)\" expand=\"block\">DELETE</ion-button>             \r\n            </ion-col>\r\n          </ion-row>\r\n      </ion-grid>\r\n    </div>    \r\n\r\n\r\n    <!-- IF THERE IS NO IMAGE -->\r\n    <div *ngIf=\"images.length == 0\">\r\n      <ion-avatar>\r\n        <ion-img src=\"assets/img/user.png\"></ion-img>\r\n      </ion-avatar>  \r\n      <div class=\"space-top\"></div>     \r\n      <ion-button color=\"secondary\" (click)=\"selectImage()\" expand=\"block\">\r\n        <ion-icon slot=\"start\" name=\"camera\"></ion-icon>\r\n          Add Profile Image\r\n      </ion-button>\r\n      <p> Your profile image will be the image used when you are chosen</p>\r\n    </div>\r\n\r\n   \r\n\r\n\r\n    <!-- Username -->\r\n    <ion-item no-padding class=\"animated fadeInUp\">\r\n      <ion-label color=\"secondary\" position=\"floating\">\r\n        <ion-icon name=\"mail\" item-start></ion-icon>\r\n        Username\r\n      </ion-label>\r\n      <ion-input color=\"secondary\" type=\"username\" [(ngModel)]=\"username\"></ion-input>\r\n    </ion-item>\r\n      \r\n\r\n    <!-- Password -->\r\n    <ion-item no-padding class=\"animated fadeInUp\">\r\n      <ion-label position=\"floating\">\r\n        <ion-icon name=\"lock\" item-start></ion-icon>\r\n        Password\r\n      </ion-label>\r\n      <ion-input color=\"secondary\" type=\"password\"  [(ngModel)]=\"password\"></ion-input>\r\n    </ion-item>  \r\n\r\n    <!-- Password Confirm -->\r\n    <ion-item no-padding class=\"animated fadeInUp\">\r\n      <ion-label position=\"floating\">\r\n        <ion-icon name=\"lock\" item-start></ion-icon>\r\n        Confirm Password\r\n      </ion-label>\r\n      <ion-input color=\"secondary\" type=\"password\"  [(ngModel)]=\"confirm_password\"></ion-input>\r\n    </ion-item>      \r\n    \r\n\r\n    <!-- Register Button -->\r\n    <section class=\"space-top\">      \r\n    <div *ngFor=\"let img of images; index as pos\">  \r\n      <ion-button color=\"secondary\" (click)=\"prosesRegister(img)\" expand=\"block\">Register</ion-button>\r\n    </div>\r\n\r\n    <div *ngIf=\"images.length == 0\">\r\n      <ion-button color=\"secondary\" expand=\"block\" disabled>Register</ion-button>\r\n    </div>\r\n    </section>\r\n    \r\n\r\n    <!-- Sign Up Button -->\r\n    <div text-center class=\"space-top\">\r\n      <span (click)=\"formLogin()\" class=\"paz\" tappable>\r\n        <ion-text color=\"light\">\r\n          Whoops, <strong>I already have an account</strong>\r\n        </ion-text>\r\n      </span>\r\n    </div>\r\n\r\n  </div>\r\n</ion-content>\r\n"
+module.exports = "<ion-content padding class=\"auth-page\">  \r\n  <div class=\"register-page\">\r\n\r\n    <!-- IMAGE UPLOAD -->  \r\n    <ion-grid>\r\n          <ion-row> \r\n            <ion-col>     \r\n              <ion-avatar *ngFor=\"let img of images; index as pos\">\r\n                <img [src]=\"img.path\" /> \r\n              </ion-avatar>        \r\n            </ion-col>\r\n        </ion-row>\r\n    </ion-grid>\r\n    <!-- IF THERE IS AN IMAGE -->\r\n    <div *ngFor=\"let img of images; index as pos\">\r\n      <ion-grid>\r\n          <ion-row> \r\n            <ion-col>\r\n              <ion-button color=\"secondary\" (click)=\"selectdeleteImage(img, pos)\" expand=\"block\">RETAKE</ion-button>\r\n            </ion-col>\r\n            <ion-col>\r\n              <ion-button color=\"secondary\" (click)=\"deleteImage(img, pos)\" expand=\"block\">DELETE</ion-button>             \r\n            </ion-col>\r\n          </ion-row>\r\n      </ion-grid>\r\n    </div>    \r\n\r\n\r\n    <!-- IF THERE IS NO IMAGE -->\r\n    <div *ngIf=\"images.length == 0\">\r\n      <ion-avatar>\r\n        <ion-img src=\"assets/img/user.png\"></ion-img>\r\n      </ion-avatar>  \r\n      <div class=\"space-top\"></div>     \r\n      <ion-button color=\"secondary\" (click)=\"selectImage()\" expand=\"block\">\r\n        <ion-icon slot=\"start\" name=\"camera\"></ion-icon>\r\n          Add Profile Image\r\n      </ion-button>\r\n      <p> Your profile image will be the image used when you are chosen</p>\r\n    </div>   \r\n\r\n\r\n    <!-- Username -->\r\n    <ion-item no-padding class=\"animated fadeInUp\">\r\n      <ion-label color=\"secondary\" position=\"floating\">\r\n        <ion-icon name=\"person\" item-start></ion-icon>\r\n        Username:\r\n      </ion-label>\r\n      <ion-input color=\"secondary\" type=\"username\" [(ngModel)]=\"username\"></ion-input>\r\n    </ion-item>\r\n\r\n    <!-- Full Name -->\r\n    <ion-item no-padding class=\"animated fadeInUp\">\r\n      <ion-label color=\"secondary\" position=\"floating\">\r\n        <ion-icon name=\"person\" item-start></ion-icon>\r\n        Full Name: (First and Last)\r\n      </ion-label>\r\n      <ion-input color=\"secondary\" type=\"fullName\" [(ngModel)]=\"fullName\"></ion-input>\r\n    </ion-item>\r\n\r\n    <!-- Full Name -->\r\n    <ion-item no-padding class=\"animated fadeInUp\">\r\n      <ion-label color=\"secondary\" position=\"floating\">\r\n        <ion-icon name=\"mail\" item-start></ion-icon>\r\n          Email:\r\n      </ion-label>\r\n      <ion-input color=\"secondary\" type=\"email\" [(ngModel)]=\"email\"></ion-input>\r\n    </ion-item>\r\n      \r\n\r\n    <!-- Password -->\r\n    <ion-item no-padding class=\"animated fadeInUp\">\r\n      <ion-label position=\"floating\">\r\n        <ion-icon name=\"lock\" item-start></ion-icon>\r\n        Password:\r\n      </ion-label>\r\n      <ion-input color=\"secondary\" type=\"password\"  [(ngModel)]=\"password\"></ion-input>\r\n    </ion-item>  \r\n\r\n    <!-- Password Confirm -->\r\n    <ion-item no-padding class=\"animated fadeInUp\">\r\n      <ion-label position=\"floating\">\r\n        <ion-icon name=\"lock\" item-start></ion-icon>\r\n        Confirm Password:\r\n      </ion-label>\r\n      <ion-input color=\"secondary\" type=\"password\"  [(ngModel)]=\"confirm_password\"></ion-input>\r\n    </ion-item>      \r\n    \r\n\r\n    <!-- Register Button -->\r\n    <section class=\"space-top\">      \r\n    <div *ngFor=\"let img of images; index as pos\">  \r\n      <ion-button color=\"secondary\" (click)=\"prosesRegister(img)\" expand=\"block\">Register</ion-button>\r\n    </div>\r\n\r\n    <div *ngIf=\"images.length == 0\">\r\n      <ion-button color=\"secondary\" expand=\"block\" disabled>Register</ion-button>\r\n    </div>\r\n    </section>\r\n    \r\n\r\n    <!-- Sign Up Button -->\r\n    <div text-center class=\"space-top\">\r\n      <span (click)=\"formLogin()\" class=\"paz\" tappable>\r\n        <ion-text color=\"light\">\r\n          My bad fam, <strong>I already have an account</strong>\r\n        </ion-text>\r\n      </span>\r\n    </div>\r\n  </div>\r\n  <div class=\"space-top-20\"></div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -175,12 +175,13 @@ var RegisterPage = /** @class */ (function () {
         this.password = "";
         this.userPhoto = "";
         this.confirm_password = "";
+        this.fullName = "";
+        this.email = "";
     }
     // IMAGE UPLOAD STUFF ---------------------------------
     RegisterPage.prototype.ngOnInit = function () {
-        var _this = this;
         this.plt.ready().then(function () {
-            _this.loadStoredImages();
+            //this.loadStoredImages();
         });
     };
     RegisterPage.prototype.loadStoredImages = function () {
@@ -385,45 +386,37 @@ var RegisterPage = /** @class */ (function () {
     // If form is ok, send data to api
     RegisterPage.prototype.prosesRegister = function (imgEntry) {
         return __awaiter(this, void 0, void 0, function () {
-            var toast, toast, toast, body;
+            var toast, toast, body;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!(this.username == "")) return [3 /*break*/, 2];
+                        if (!(this.username == "" || this.fullName == "" || this.email == "")) return [3 /*break*/, 2];
                         return [4 /*yield*/, this.toastCtrl.create({
-                                message: "Username is required",
+                                message: "Please fill out all fields",
                                 duration: 2000
                             })];
                     case 1:
                         toast = _a.sent();
                         toast.present();
-                        return [3 /*break*/, 7];
+                        return [3 /*break*/, 5];
                     case 2:
-                        if (!(this.password == "")) return [3 /*break*/, 4];
+                        if (!(this.confirm_password != this.password)) return [3 /*break*/, 4];
                         return [4 /*yield*/, this.toastCtrl.create({
-                                message: "Password is required",
+                                message: "Password does not match",
                                 duration: 2000
                             })];
                     case 3:
                         toast = _a.sent();
                         toast.present();
-                        return [3 /*break*/, 7];
+                        return [3 /*break*/, 5];
                     case 4:
-                        if (!(this.confirm_password != this.password)) return [3 /*break*/, 6];
-                        return [4 /*yield*/, this.toastCtrl.create({
-                                message: "Password does not match",
-                                duration: 2000
-                            })];
-                    case 5:
-                        toast = _a.sent();
-                        toast.present();
-                        return [3 /*break*/, 7];
-                    case 6:
                         this.startUpload(imgEntry);
                         body = {
                             username: this.username,
                             password: this.password,
+                            fullName: this.fullName,
+                            email: this.email,
                             userPhoto: this.userPhoto,
                             aksi: 'register'
                         };
@@ -455,8 +448,8 @@ var RegisterPage = /** @class */ (function () {
                                 }
                             });
                         }); });
-                        _a.label = 7;
-                    case 7: return [2 /*return*/];
+                        _a.label = 5;
+                    case 5: return [2 /*return*/];
                 }
             });
         });
