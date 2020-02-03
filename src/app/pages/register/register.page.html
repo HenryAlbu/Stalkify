@@ -37,18 +37,34 @@
           Add Profile Image
       </ion-button>
       <p> Your profile image will be the image used when you are chosen</p>
-    </div>
-
-   
+    </div>   
 
 
     <!-- Username -->
     <ion-item no-padding class="animated fadeInUp">
       <ion-label color="secondary" position="floating">
-        <ion-icon name="mail" item-start></ion-icon>
-        Username
+        <ion-icon name="person" item-start></ion-icon>
+        Username:
       </ion-label>
       <ion-input color="secondary" type="username" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <!-- Full Name -->
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label color="secondary" position="floating">
+        <ion-icon name="person" item-start></ion-icon>
+        Full Name: (First and Last)
+      </ion-label>
+      <ion-input color="secondary" type="fullName" [(ngModel)]="fullName"></ion-input>
+    </ion-item>
+
+    <!-- Full Name -->
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label color="secondary" position="floating">
+        <ion-icon name="mail" item-start></ion-icon>
+          Email:
+      </ion-label>
+      <ion-input color="secondary" type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
       
 
@@ -56,7 +72,7 @@
     <ion-item no-padding class="animated fadeInUp">
       <ion-label position="floating">
         <ion-icon name="lock" item-start></ion-icon>
-        Password
+        Password:
       </ion-label>
       <ion-input color="secondary" type="password"  [(ngModel)]="password"></ion-input>
     </ion-item>  
@@ -65,7 +81,7 @@
     <ion-item no-padding class="animated fadeInUp">
       <ion-label position="floating">
         <ion-icon name="lock" item-start></ion-icon>
-        Confirm Password
+        Confirm Password:
       </ion-label>
       <ion-input color="secondary" type="password"  [(ngModel)]="confirm_password"></ion-input>
     </ion-item>      
@@ -87,10 +103,10 @@
     <div text-center class="space-top">
       <span (click)="formLogin()" class="paz" tappable>
         <ion-text color="light">
-          Whoops, <strong>I already have an account</strong>
+          My bad fam, <strong>I already have an account</strong>
         </ion-text>
       </span>
     </div>
-
   </div>
+  <div class="space-top-20"></div>
 </ion-content>

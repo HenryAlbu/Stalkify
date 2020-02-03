@@ -25,6 +25,8 @@ export class RegisterPage implements OnInit {
   password: string = "";
   userPhoto: string = "";
   confirm_password: string = "";
+  fullName: string = "";
+  email: string = "";
 
   constructor(
     private router: Router,
@@ -45,7 +47,7 @@ export class RegisterPage implements OnInit {
   // IMAGE UPLOAD STUFF ---------------------------------
   ngOnInit() {
     this.plt.ready().then(() => {
-      this.loadStoredImages();
+    //this.loadStoredImages();
     });
   }
 
@@ -240,15 +242,9 @@ async uploadImageData(formData: FormData) {
   // Makes sure all feilds are filled in register form
   // If form is ok, send data to api
   async prosesRegister(imgEntry){
-    if(this.username==""){
+    if(this.username=="" || this.fullName=="" || this.email==""){
       const toast = await this.toastCtrl.create({
-        message: "Username is required",
-        duration: 2000
-      });
-      toast.present();
-    }else if (this.password ==""){
-      const toast = await this.toastCtrl.create({
-        message: "Password is required",
+        message: "Please fill out all fields",
         duration: 2000
       });
       toast.present();
@@ -263,6 +259,8 @@ async uploadImageData(formData: FormData) {
       let body = {
         username: this.username,
         password: this.password,
+        fullName: this.fullName,
+        email: this.email,
         userPhoto: this.userPhoto,
         aksi: 'register'
       };
