@@ -3,6 +3,7 @@ import {  ToastController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
+
 // Modals
 import { ImagePage } from './../modal/image/image.page';
 
@@ -13,28 +14,32 @@ import { ImagePage } from './../modal/image/image.page';
   styleUrls: ['./home-results.page.scss']
 })
 export class HomeResultsPage {
-  searchKey = '';
-  yourLocation = '123 Test Street';
-  themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
+  
 
   username: string;
-  anggota:any;
+  userPhoto: string;
+  fullName: string;
+
   constructor(
     public modalCtrl: ModalController,
     private router: Router,
     public toastCtrl : ToastController,
     private storage: Storage
+
   ) {
 
   }
 
   // Just to display username on login
-  ionViewWillEnter() {
-    
-    this.storage.get('session_storage').then((res)=>{
-      this.anggota = res;
-      this.username = this.anggota.username;
+  ionViewWillEnter() {    
+    this.storage.get('session_storage').then((res)=>{      
+      this.username = res.username;
     })
+    this.storage.get('selected_user').then((res)=>{      
+      this.userPhoto = "http://spontadeal.com/stalkify/upload/uploads/" + res.userPhoto;
+      this.fullName = res.fullName;
+    })        
+    
   }
 
   // Log out on click
@@ -56,7 +61,5 @@ export class HomeResultsPage {
     });
     return await modal.present();
   }
-
-  
 
 }
