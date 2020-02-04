@@ -135,7 +135,7 @@ var HomeResultsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">    \r\n    <ion-title>\r\n        <ion-text color=\"light\">\r\n          <ion-text color=\"light\" class=\"fw700\">{{username}}</ion-text>\r\n        </ion-text>\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button size=\"small\" shape=\"round\" color=\"medium\" (click)=\"prosesLogout()\">\r\n        <ion-icon name=\"notifications\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar> \r\n</ion-header>\r\n\r\n<ion-content>\r\n  \r\n  <ion-card class=\"bg-white\">\r\n    <ion-img  (click)=\"presentImage(themeCover)\" [src]=\"themeCover\"></ion-img>  \r\n  </ion-card>\r\n  \r\n</ion-content>\r\n  "
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">    \r\n    <ion-title>\r\n        <ion-text color=\"light\">\r\n          <ion-text color=\"light\" class=\"fw700\">{{username}}</ion-text>\r\n        </ion-text>\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button size=\"small\" shape=\"round\" color=\"medium\" (click)=\"prosesLogout()\">\r\n        <ion-icon name=\"notifications\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar> \r\n</ion-header>\r\n\r\n\r\n\r\n<ion-content fullscreen>      \r\n  <ion-card>\r\n    <div class=\"crop\">\r\n      <img (click)=\"presentImage(userPhoto)\" [src]=\"userPhoto\" />\r\n    </div>\r\n    <ion-card-header>\r\n      <ion-card-subtitle>User of the Day:</ion-card-subtitle>\r\n      <ion-card-title>{{fullName}}</ion-card-title>\r\n    </ion-card-header>        \r\n  </ion-card>\r\n</ion-content>\r\n  "
 
 /***/ }),
 
@@ -221,16 +221,16 @@ var HomeResultsPage = /** @class */ (function () {
         this.router = router;
         this.toastCtrl = toastCtrl;
         this.storage = storage;
-        this.searchKey = '';
-        this.yourLocation = '123 Test Street';
-        this.themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
     }
     // Just to display username on login
     HomeResultsPage.prototype.ionViewWillEnter = function () {
         var _this = this;
         this.storage.get('session_storage').then(function (res) {
-            _this.anggota = res;
-            _this.username = _this.anggota.username;
+            _this.username = res.username;
+        });
+        this.storage.get('selected_user').then(function (res) {
+            _this.userPhoto = "http://spontadeal.com/stalkify/upload/uploads/" + res.userPhoto;
+            _this.fullName = res.fullName;
         });
     };
     // Log out on click
