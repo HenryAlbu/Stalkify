@@ -4,6 +4,8 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage } from '@ionic/storage';
+import { PostProvider } from '../providers/post-provider';
+
 
 
 @Component({
@@ -13,12 +15,12 @@ import { Storage } from '@ionic/storage';
 })
 export class AppComponent {
 
-
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private storage: Storage,
+    private postPvdr: PostProvider,
     private router: Router
 
   ) {
@@ -28,6 +30,7 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+      this.getSelected();
       this.splashScreen.hide();
     }).catch(() => {});
     
@@ -37,6 +40,17 @@ export class AppComponent {
       }
     }) 
   }
+
+  // GET SELECTED USER
+  async getSelected(){    
+    let body = {
+      aksi: 'getSelected'
+    };
+    this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{  
+        this.storage.set('selected_user', data.result);        
+    });
+
+}
 
   
 }
