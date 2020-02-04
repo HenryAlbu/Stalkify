@@ -13,13 +13,17 @@
   </ion-toolbar> 
 </ion-header>
 
-<ion-content fullscreen>
+
+
+<ion-content fullscreen>      
   <ion-card>
-        <img (click)="presentImage(themeCover)" [src]="userPhoto" />
-        <ion-card-header>
-          <ion-card-subtitle>User of the Day:</ion-card-subtitle>
-          <ion-card-title>{{fullName}}</ion-card-title>
-        </ion-card-header>        
+    <div class="crop">
+      <img (click)="presentImage(userPhoto)" [src]="userPhoto" />
+    </div>
+    <ion-card-header>
+      <ion-card-subtitle>User of the Day:</ion-card-subtitle>
+      <ion-card-title>{{fullName}}</ion-card-title>
+    </ion-card-header>        
   </ion-card>
 </ion-content>
   

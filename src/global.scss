@@ -11,7 +11,11 @@
 
 
 // +++++++++++++++++++++++++++ GENERAL STYLES FOR ALL PAGES ++++++++++++++++++++++++++++++++++++
-
+  .crop{
+    max-height: 200px !important;
+    overflow: hidden;
+  }
+  
   ion-button{
     height: 40px;
     font-size: 16px;
