@@ -16,14 +16,24 @@
 
 
 <ion-content fullscreen>      
+
+
+  <!-- USER SELECTED PHOTO -->
   <ion-card>
+    <ion-fab vertical="center" horizontal="end" slot="fixed" edge>
+      <ion-fab-button  (click)="takePicture()" size="large" color="danger">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
     <div class="crop">
       <img (click)="presentImage(userPhoto)" [src]="userPhoto" />
     </div>
     <ion-card-header>
       <ion-card-subtitle>User of the Day:</ion-card-subtitle>
       <ion-card-title>{{fullName}}</ion-card-title>
-    </ion-card-header>        
+    </ion-card-header> 
+         
   </ion-card>
+
 </ion-content>
   

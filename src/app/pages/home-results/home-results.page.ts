@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-import {  ToastController, ModalController } from '@ionic/angular';
+import {  Component } from '@angular/core';
+import { ModalController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
 
+
 // Modals
 import { ImagePage } from './../modal/image/image.page';
+
+const STORAGE_KEY = 'my_images';
 
 
 @Component({
@@ -15,7 +18,7 @@ import { ImagePage } from './../modal/image/image.page';
 })
 export class HomeResultsPage {
   
-
+  images = [];
   username: string;
   userPhoto: string;
   fullName: string;
@@ -28,6 +31,10 @@ export class HomeResultsPage {
 
   ) {
 
+  }
+
+  takePicture(){
+    this.router.navigate(['/approve-photo']);
   }
 
   // Just to display username on login
@@ -61,5 +68,5 @@ export class HomeResultsPage {
     });
     return await modal.present();
   }
-
+  
 }

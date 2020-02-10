@@ -91,7 +91,6 @@ export class RegisterPage implements OnInit {
       var options: CameraOptions = {
           quality: 100,
           sourceType: sourceType,
-          targetHeight: 500,
           targetWidth: 500,
           cameraDirection: 1,
           saveToPhotoAlbum: false,

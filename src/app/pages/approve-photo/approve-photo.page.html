@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Approve Photo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-card>
+  <div class="crop-500" *ngFor="let img of images; index as pos" text-center padding>
+     <img [src]="img.path" /> 
+  </div>
+</ion-card>
+
+   
+    
+   
+
+  <ion-card class="bg-white" no-margin>
+    <ion-card-content>
+            
+      <p margin-bottom>
+        Photo will be sent to stalkee for confirmation. Points will be given after photo is approved.
+      </p>      
+     
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+<ion-footer>  
+  <ion-grid class="no-padding">
+        <ion-row>
+          <ion-col col-6 class="black-color" *ngFor="let img of images; index as pos">
+            <ion-button fill="clear" expand="full" color="secondary" (click)="prosesSpotted(img)" >
+      <ion-icon slot="start" name="thumbs-up"></ion-icon>
+      Submit</ion-button>
+          </ion-col> 
+          <ion-col col-6 class="primary-color">
+            <ion-button fill="clear" expand="full" color="secondary" (click)="selectImage()">
+      <ion-icon slot="start" name="camera"></ion-icon>
+      Retake</ion-button>
+          </ion-col>
+        </ion-row>
+  </ion-grid>
+</ion-footer>
