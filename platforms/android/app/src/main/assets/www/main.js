@@ -857,6 +857,10 @@ var map = {
 		"./src/app/pages/about/about.module.ts",
 		"about-about-module"
 	],
+	"./pages/approve-photo/approve-photo.module": [
+		"./src/app/pages/approve-photo/approve-photo.module.ts",
+		"pages-approve-photo-approve-photo-module"
+	],
 	"./pages/edit-profile/edit-profile.module": [
 		"./src/app/pages/edit-profile/edit-profile.module.ts",
 		"edit-profile-edit-profile-module"
@@ -928,6 +932,7 @@ var routes = [
     { path: 'edit-profile', loadChildren: './pages/edit-profile/edit-profile.module#EditProfilePageModule' },
     { path: 'home-results', loadChildren: './pages/home-results/home-results.module#HomeResultsPageModule' },
     { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
+    { path: 'approve-photo', loadChildren: './pages/approve-photo/approve-photo.module#ApprovePhotoPageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
