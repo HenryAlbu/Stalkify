@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'home-results', loadChildren: './pages/home-results/home-results.module#HomeResultsPageModule' },
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'approve-photo', loadChildren: './pages/approve-photo/approve-photo.module#ApprovePhotoPageModule' },
+  { path: 'tutorial', loadChildren: './pages/tutorial/tutorial.module#TutorialPageModule' },
+
 
 ];
 

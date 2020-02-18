@@ -880,6 +880,10 @@ var map = {
 	"./pages/tabs/tabs.module": [
 		"./src/app/pages/tabs/tabs.module.ts",
 		"pages-tabs-tabs-module"
+	],
+	"./pages/tutorial/tutorial.module": [
+		"./src/app/pages/tutorial/tutorial.module.ts",
+		"pages-tutorial-tutorial-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -933,6 +937,7 @@ var routes = [
     { path: 'home-results', loadChildren: './pages/home-results/home-results.module#HomeResultsPageModule' },
     { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
     { path: 'approve-photo', loadChildren: './pages/approve-photo/approve-photo.module#ApprovePhotoPageModule' },
+    { path: 'tutorial', loadChildren: './pages/tutorial/tutorial.module#TutorialPageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -1059,7 +1064,8 @@ var AppComponent = /** @class */ (function () {
         }).catch(function () { });
         this.storage.get('session_storage').then(function (res) {
             if (res != null) {
-                _this.router.navigate(['/tabs/home']);
+                _this.router.navigate(['/tutorial/TutorialPageModule']);
+                //this.router.navigate(['/tabs/home']);
             }
         });
     };

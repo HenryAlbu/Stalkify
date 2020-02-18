@@ -100,7 +100,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-//import { TutorialModalController } from './../tutorial/tutorial.module';
 var routes = [
     {
         path: '',

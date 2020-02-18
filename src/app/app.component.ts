@@ -36,7 +36,8 @@ export class AppComponent {
     
     this.storage.get('session_storage').then((res)=>{
       if(res != null){
-        this.router.navigate(['/tabs/home']);
+        //this.router.navigate(['/tabs/home']);
+        this.router.navigate(['/tutorial']);
       }
     }) 
   }

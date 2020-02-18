@@ -46,7 +46,8 @@ export class LoginPage implements OnInit {
         if(data.success){
           // Create session storage
           this.storage.set('session_storage', data.result);
-          this.router.navigate(['/tabs/home']);
+          this.router.navigate(['/tutorial']);
+          //this.router.navigate(['/tabs/home']);
           const toast = await this.toastCtrl.create({
             message: 'Login successful',
             duration: 2000

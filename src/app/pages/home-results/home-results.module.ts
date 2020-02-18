@@ -8,8 +8,6 @@ import { PopmenuComponent } from './../../components/popmenu/popmenu.component';
 
 import { HomeResultsPage } from './home-results.page';
 
-//import { TutorialModalController } from './../tutorial/tutorial.module';
-
 const routes: Routes = [
   {
     path: '',
@@ -24,7 +22,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    //TutorialModalController
   ],
   declarations: [HomeResultsPage, PopmenuComponent]
 })
