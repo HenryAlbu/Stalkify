@@ -69,7 +69,7 @@ export class ApprovePhotoPage implements OnInit {
       }
     });
   }
- 
+ //LOCATE IMAGE
   pathForImage(img) {
     if (img === null) {
       return '';
@@ -87,12 +87,12 @@ export class ApprovePhotoPage implements OnInit {
     });
     toast.present();
   }
- 
+ //OPERATE CAMERA
   async selectImage() {
     this.images = [];
     this.takePicture(this.camera.PictureSourceType.CAMERA);
   }
-   
+   //USING CAMERA TO GET TARGET
   takePicture(sourceType: PictureSourceType) {
       var options: CameraOptions = {
           quality: 100,
@@ -119,7 +119,7 @@ export class ApprovePhotoPage implements OnInit {
       });
    
   }
-
+  //SAVING NEW IMAGE IN DATABASE
   createFileName() {
     var d = new Date(),
         n = d.getTime(),
@@ -160,7 +160,7 @@ updateStoredImages(name) {
         this.ref.detectChanges(); // trigger change detection cycle
     });
 }
-
+//DELETE IMAGE FROM SYSTEM
 deleteImage(imgEntry, position) {
   
   this.images.splice(position, 1);
@@ -177,7 +177,7 @@ deleteImage(imgEntry, position) {
       });
   });
 }
-
+//SELECT IMAGE TO DELETE 
 selectdeleteImage(imgEntry, position) {
   this.images.splice(position, 1);
 
@@ -194,7 +194,7 @@ selectdeleteImage(imgEntry, position) {
   });
   this.takePicture(this.camera.PictureSourceType.CAMERA);
 }
-
+//UPLOADING IMAGE TO SYSTEM
 startUpload(imgEntry) {
   this.file.resolveLocalFilesystemUrl(imgEntry.filePath)
       .then(entry => {
