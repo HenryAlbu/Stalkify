@@ -46,8 +46,18 @@ export class LoginPage implements OnInit {
         if(data.success){
           // Create session storage
           this.storage.set('session_storage', data.result);
-          this.router.navigate(['/tutorial']);
-          //this.router.navigate(['/tabs/home']);
+          
+          //checks to see if this is the users first time logging in
+          //if so directs to tutorial and sets firstlogin in localstorage
+          //if not, goes directly to homescreen
+          this.storage.get('firstlogin').then((data) => {
+            if(data == 'no'){
+              this.storage.set('firstlogin', 'no');
+              this.router.navigate(['/tutorial']);
+            } else {
+              this.router.navigate(['/tabs/home']);
+            }
+          });
           const toast = await this.toastCtrl.create({
             message: 'Login successful',
             duration: 2000
