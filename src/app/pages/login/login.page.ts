@@ -10,18 +10,18 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  
+
   username: string = "";
-  password: string = "";  
+  password: string = "";
 
   constructor(
     private router: Router,
     private postPvdr: PostProvider,
-    public toastCtrl : ToastController,
+    public toastCtrl: ToastController,
     private storage: Storage
   ) { }
 
-  
+
 
   ngOnInit() {
   }
@@ -32,8 +32,8 @@ export class LoginPage implements OnInit {
     //this.navCtrl.navigateRoot('/register');
   }
 
-  async prosesLogin(){
-    if(this.username != "" && this.password != ""){     
+  async prosesLogin() {
+    if (this.username != "" && this.password != "") {
       console.log("username" + this.username);
       console.log("Password" + this.password);
       let body = {
@@ -41,9 +41,9 @@ export class LoginPage implements OnInit {
         password: this.password,
         aksi: 'login'
       };
-      this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{        
+      this.postPvdr.postData(body, 'proses-api.php').subscribe(async data => {
         var alertmsg = data.msg;
-        if(data.success){
+        if (data.success) {
           // Create session storage
           this.storage.set('session_storage', data.result);
           this.router.navigate(['/tabs/home']);
@@ -52,10 +52,10 @@ export class LoginPage implements OnInit {
             duration: 2000
           });
           toast.present();
-          this.username="";
+          this.username = "";
           this.password = "";
           console.log(data);
-        }else{
+        } else {
           const toast = await this.toastCtrl.create({
             message: alertmsg,
             duration: 2000
@@ -64,7 +64,7 @@ export class LoginPage implements OnInit {
         }
       });
 
-    }else{
+    } else {
       const toast = await this.toastCtrl.create({
         message: 'Username or password invalid',
         duration: 2000
