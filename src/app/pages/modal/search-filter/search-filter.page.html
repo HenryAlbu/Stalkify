@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-        <ion-button color="primary" (click)="closeModal()">
+        <ion-button color="primary">
             <ion-icon name="close" color="light"></ion-icon>
         </ion-button>
     </ion-buttons>
@@ -24,14 +24,14 @@
 	  <ion-label class="no-margin-bottom" stacked>
       <ion-text color="dark" class="fw500">Radius:</ion-text>
     </ion-label>
-    <ion-range min="1" max="50" step="1" value="1" class="no-padding-top" [(ngModel)]="radiusmiles">
-      <ion-label slot="start"><ion-text color="primary"> {{radiusmiles}} Mile(s)</ion-text></ion-label>
+    <ion-range min="1" max="50" step="1" value="1" class="no-padding-top" >
+      <ion-label slot="start"><ion-text color="primary">Mile(s)</ion-text></ion-label>
     </ion-range>
 	</ion-item>
 
 	<ion-item>
 	  <ion-label class="fw500" color="dark">Organize by</ion-label>
-	  <ion-select [(ngModel)]="organizeby">
+	  <ion-select >
 	    <ion-select-option>Most Relevant</ion-select-option>
 	    <ion-select-option>Closest</ion-select-option>
 	    <ion-select-option>Low Price</ion-select-option>
@@ -43,7 +43,7 @@
 
 	<ion-item>
 	  <ion-label class="fw500" color="dark">Dish Type</ion-label>
-	  <ion-select [(ngModel)]="dishtype" multiple="true">
+	  <ion-select multiple="true">
 	    <ion-select-option>Health Food</ion-select-option>
 	    <ion-select-option>Veggie</ion-select-option>
 	    <ion-select-option>Pasta</ion-select-option>
@@ -58,7 +58,7 @@
 
 	<ion-item>
 	  <ion-label class="fw500" color="dark">Nationalities</ion-label>
-	  <ion-select [(ngModel)]="dishnationality" multiple="true">
+	  <ion-select  multiple="true">
 	    <ion-select-option>German</ion-select-option>
 	    <ion-select-option>Japanese</ion-select-option>
 	    <ion-select-option>Korean</ion-select-option>
@@ -76,9 +76,9 @@
       <ion-text color="dark" class="fw500">Min/Max Price:</ion-text>
     </ion-label>
 
-      <ion-range dualKnobs="true" [(ngModel)]="minmaxprice" min="10" max="1000" step="10" class="no-padding-top">
-        <ion-label slot="start"><ion-text color="primary">$ {{minmaxprice.lower}}</ion-text></ion-label>
-        <ion-label slot="end"><ion-text color="primary">$ {{minmaxprice.upper}}</ion-text></ion-label>
+      <ion-range dualKnobs="true" min="10" max="1000" step="10" class="no-padding-top">
+        <ion-label slot="start"><ion-text color="primary"></ion-text></ion-label>
+        <ion-label slot="end"><ion-text color="primary"></ion-text></ion-label>
       </ion-range>
 	</ion-item>
 
