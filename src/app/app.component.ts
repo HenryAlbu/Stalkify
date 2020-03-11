@@ -47,7 +47,8 @@ export class AppComponent {
       aksi: 'getSelected'
     };
     this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{  
-        this.storage.set('selected_user', data.result);        
+        this.storage.set('selected_user', data.result); 
+        
     });
 
 }

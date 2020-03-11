@@ -2,20 +2,24 @@
   <ion-toolbar color="primary">    
     <ion-title>
         <ion-text color="light">
-          <ion-text color="light" class="fw700">{{username}}</ion-text>
+          <ion-text color="light" class="fw700">My Points: {{points}}</ion-text>
         </ion-text>
     </ion-title>
     <ion-buttons slot="end">
       <ion-button size="small" shape="round" color="medium" (click)="prosesLogout()">
-        <ion-icon name="notifications"></ion-icon>
-      </ion-button>
+        <ion-icon name="exit"></ion-icon>
+      </ion-button>     
     </ion-buttons>
   </ion-toolbar> 
 </ion-header>
 
 
 
-<ion-content fullscreen>      
+<ion-content fullscreen>  
+  <section [hidden]=ishidden class="full-width">    
+    <ion-button (click)="approvePage()" class="no-margin" expand="full" color="secondary">APPROVE PHOTOS 
+    <ion-badge slot="end" color="primary" class="margin-left">12</ion-badge></ion-button>
+  </section>  
 
 
   <!-- USER SELECTED PHOTO -->
@@ -34,6 +38,65 @@
     </ion-card-header> 
          
   </ion-card>
+
+  <ion-grid>
+    <ion-row>
+       <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+    </ion-row>
+    <ion-row>
+       <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+    </ion-row>
+    <ion-row>
+       <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+    </ion-row>
+    <ion-row>
+       <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+          <ion-col>
+            <div><img src="assets/img/100.png" /></div>
+          </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
   
