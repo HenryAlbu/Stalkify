@@ -73,7 +73,7 @@ module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host ion-content {\n  --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))\r\n    ; }\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvYXBwcm92ZS1waG90by9DOlxceGFtcHBcXGh0ZG9jc1xcU3RhbGtpZnkvc3JjXFxhcHBcXHBhZ2VzXFxhcHByb3ZlLXBob3RvXFxhcHByb3ZlLXBob3RvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVRO0lBQWEsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2FwcHJvdmUtcGhvdG8vYXBwcm92ZS1waG90by5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCB7XHJcbiAgICBpb24tY29udGVudCB7XHJcbiAgICAgICAgLS1iYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoLTEzNWRlZywgdmFyKC0taW9uLWNvbG9yLW1lZGl1bSksIHZhcigtLWlvbi1jb2xvci1saWdodCkpXHJcbiAgICB9XHJcbn0iXX0= */"
+module.exports = ":host ion-content {\n  --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))\r\n    ; }\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvYXBwcm92ZS1waG90by9DOlxcVXNlcnNcXHR5XFxTdGFsa2lmeS9zcmNcXGFwcFxccGFnZXNcXGFwcHJvdmUtcGhvdG9cXGFwcHJvdmUtcGhvdG8ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRVE7SUFBYSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvYXBwcm92ZS1waG90by9hcHByb3ZlLXBob3RvLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcclxuICAgIGlvbi1jb250ZW50IHtcclxuICAgICAgICAtLWJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgtMTM1ZGVnLCB2YXIoLS1pb24tY29sb3ItbWVkaXVtKSwgdmFyKC0taW9uLWNvbG9yLWxpZ2h0KSlcclxuICAgIH1cclxufSJdfQ== */"
 
 /***/ }),
 
@@ -239,7 +239,7 @@ var ApprovePhotoPage = /** @class */ (function () {
             quality: 70,
             sourceType: sourceType,
             targetWidth: 500,
-            cameraDirection: 0,
+            cameraDirection: 1,
             saveToPhotoAlbum: false,
             correctOrientation: true
         };
