@@ -34,7 +34,7 @@ export class AboutPage implements OnInit {
       console.log(data);
 
 
-
+      //creates array of fetched data and concatenates it in a way that can be displayed nicely in the UI
       for(var i = 0; i < data['names'].length; i++){
         this.scores.push(data['names'][i] + "\n " + data['points'][i]);
       }  
