@@ -73,7 +73,7 @@ module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host ion-content {\n  --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))\r\n    ; }\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvYXBwcm92ZS1waG90by9DOlxcVXNlcnNcXHR5XFxTdGFsa2lmeS9zcmNcXGFwcFxccGFnZXNcXGFwcHJvdmUtcGhvdG9cXGFwcHJvdmUtcGhvdG8ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRVE7SUFBYSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvYXBwcm92ZS1waG90by9hcHByb3ZlLXBob3RvLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcclxuICAgIGlvbi1jb250ZW50IHtcclxuICAgICAgICAtLWJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgtMTM1ZGVnLCB2YXIoLS1pb24tY29sb3ItbWVkaXVtKSwgdmFyKC0taW9uLWNvbG9yLWxpZ2h0KSlcclxuICAgIH1cclxufSJdfQ== */"
+module.exports = ":host ion-content {\n  --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))\r\n    ; }\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvYXBwcm92ZS1waG90by9DOlxceGFtcHBcXGh0ZG9jc1xcU3RhbGtpZnkvc3JjXFxhcHBcXHBhZ2VzXFxhcHByb3ZlLXBob3RvXFxhcHByb3ZlLXBob3RvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVRO0lBQWEsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2FwcHJvdmUtcGhvdG8vYXBwcm92ZS1waG90by5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCB7XHJcbiAgICBpb24tY29udGVudCB7XHJcbiAgICAgICAgLS1iYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoLTEzNWRlZywgdmFyKC0taW9uLWNvbG9yLW1lZGl1bSksIHZhcigtLWlvbi1jb2xvci1saWdodCkpXHJcbiAgICB9XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -197,6 +197,7 @@ var ApprovePhotoPage = /** @class */ (function () {
             }
         });
     };
+    //LOCATE IMAGE
     ApprovePhotoPage.prototype.pathForImage = function (img) {
         if (img === null) {
             return '';
@@ -224,6 +225,7 @@ var ApprovePhotoPage = /** @class */ (function () {
             });
         });
     };
+    //OPERATE CAMERA
     ApprovePhotoPage.prototype.selectImage = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -233,13 +235,14 @@ var ApprovePhotoPage = /** @class */ (function () {
             });
         });
     };
+    //USING CAMERA TO GET TARGET
     ApprovePhotoPage.prototype.takePicture = function (sourceType) {
         var _this = this;
         var options = {
             quality: 70,
             sourceType: sourceType,
             targetWidth: 500,
-            cameraDirection: 1,
+            cameraDirection: 0,
             saveToPhotoAlbum: false,
             correctOrientation: true
         };
@@ -259,6 +262,7 @@ var ApprovePhotoPage = /** @class */ (function () {
             }
         });
     };
+    //SAVING NEW IMAGE IN DATABASE
     ApprovePhotoPage.prototype.createFileName = function () {
         var d = new Date(), n = d.getTime(), newFileName = n + ".jpg";
         this.spottedPhoto = newFileName;
@@ -295,6 +299,7 @@ var ApprovePhotoPage = /** @class */ (function () {
             _this.ref.detectChanges(); // trigger change detection cycle
         });
     };
+    //DELETE IMAGE FROM SYSTEM
     ApprovePhotoPage.prototype.deleteImage = function (imgEntry, position) {
         var _this = this;
         this.images.splice(position, 1);
@@ -308,6 +313,7 @@ var ApprovePhotoPage = /** @class */ (function () {
             });
         });
     };
+    //SELECT IMAGE TO DELETE 
     ApprovePhotoPage.prototype.selectdeleteImage = function (imgEntry, position) {
         var _this = this;
         this.images.splice(position, 1);
@@ -322,6 +328,7 @@ var ApprovePhotoPage = /** @class */ (function () {
         });
         this.takePicture(this.camera.PictureSourceType.CAMERA);
     };
+    //UPLOADING IMAGE TO SYSTEM
     ApprovePhotoPage.prototype.startUpload = function (imgEntry) {
         var _this = this;
         this.file.resolveLocalFilesystemUrl(imgEntry.filePath)
