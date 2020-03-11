@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="profile">
-  <ion-card no-margin>
+  <ion-card class="no-margin">
     <ion-card-content class="bg-profile">
       <img src="assets/img/avatar.jpeg">
       <h1 class="fw500">Ian Something</h1>
@@ -30,32 +30,23 @@
     
             <ion-item>
               <ion-label color="dark" position="stacked">Email:</ion-label>
-              <ion-input inputmode="email" placeholder="Ex.: joe@doe.com" value="firminoata@gmail.com"></ion-input>
+              <ion-input inputmode="email" placeholder="Ex.: joe@doe.com" value="ian@gmail.com"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label color="dark" position="stacked">New Password:</ion-label>
+              <ion-input inputmode="text" placeholder=""></ion-input>
             </ion-item>
     
             <ion-item>
-              <ion-label color="dark" position="stacked">Address:</ion-label>
-              <ion-input inputmode="text" placeholder="Ex.: Abey Road 5"></ion-input>
+              <ion-label color="dark" position="stacked">Confirm New Password:</ion-label>
+              <ion-input inputmode="text" placeholder=""></ion-input>
             </ion-item>           
           </ion-list>
-
-          <ion-list>
-            <ion-radio-group>
-              <ion-list-header color="light">
-                <ion-label class="fw700">User Type</ion-label>
-              </ion-list-header>
           
-              <ion-item>
-                <ion-label color="primary">Customer</ion-label>
-                <ion-radio slot="start" value="customer" checked></ion-radio>
-              </ion-item>          
-              
-            </ion-radio-group>
-          </ion-list>
         </ion-col>
       </ion-row>
     </ion-grid>
-  
-    <ion-button size="large" expand="full" color="dark" (click)="sendData()" no-margin>Edit</ion-button>
   </ion-card>
+  <ion-button size="large" expand="full" color="dark" (click)="sendData()" no-margin>Submit</ion-button>
 </ion-content>

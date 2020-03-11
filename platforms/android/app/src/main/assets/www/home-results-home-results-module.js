@@ -135,7 +135,7 @@ var HomeResultsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">    \r\n    <ion-title>\r\n        <ion-text color=\"light\">\r\n          <ion-text color=\"light\" class=\"fw700\">{{username}}</ion-text>\r\n        </ion-text>\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button size=\"small\" shape=\"round\" color=\"medium\" (click)=\"prosesLogout()\">\r\n        <ion-icon name=\"notifications\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar> \r\n</ion-header>\r\n\r\n\r\n\r\n<ion-content fullscreen>      \r\n\r\n\r\n  <!-- USER SELECTED PHOTO -->\r\n  <ion-card>\r\n    <ion-fab vertical=\"center\" horizontal=\"end\" slot=\"fixed\" edge>\r\n      <ion-fab-button  (click)=\"takePicture()\" size=\"large\" color=\"danger\">\r\n        <ion-icon name=\"camera\"></ion-icon>\r\n      </ion-fab-button>\r\n    </ion-fab>\r\n    <div class=\"crop\">\r\n      <img (click)=\"presentImage(userPhoto)\" [src]=\"userPhoto\" />\r\n    </div>\r\n    <ion-card-header>\r\n      <ion-card-subtitle>User of the Day:</ion-card-subtitle>\r\n      <ion-card-title>{{fullName}}</ion-card-title>\r\n    </ion-card-header> \r\n         \r\n  </ion-card>\r\n\r\n</ion-content>\r\n  "
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">    \r\n    <ion-title>\r\n        <ion-text color=\"light\">\r\n          <ion-text color=\"light\" class=\"fw700\">My Points: {{points}}</ion-text>\r\n        </ion-text>\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button size=\"small\" shape=\"round\" color=\"medium\" (click)=\"prosesLogout()\">\r\n        <ion-icon name=\"exit\"></ion-icon>\r\n      </ion-button>     \r\n    </ion-buttons>\r\n  </ion-toolbar> \r\n</ion-header>\r\n\r\n\r\n\r\n<ion-content fullscreen>  \r\n  <section [hidden]=ishidden class=\"full-width\">    \r\n    <ion-button (click)=\"approvePage()\" class=\"no-margin\" expand=\"full\" color=\"secondary\">APPROVE PHOTOS \r\n    <ion-badge slot=\"end\" color=\"primary\" class=\"margin-left\">12</ion-badge></ion-button>\r\n  </section>  \r\n\r\n\r\n  <!-- USER SELECTED PHOTO -->\r\n  <ion-card>\r\n    <ion-fab vertical=\"center\" horizontal=\"end\" slot=\"fixed\" edge>\r\n      <ion-fab-button  (click)=\"takePicture()\" size=\"large\" color=\"danger\">\r\n        <ion-icon name=\"camera\"></ion-icon>\r\n      </ion-fab-button>\r\n    </ion-fab>\r\n    <div class=\"crop\">\r\n      <img (click)=\"presentImage(userPhoto)\" [src]=\"userPhoto\" />\r\n    </div>\r\n    <ion-card-header>\r\n      <ion-card-subtitle>User of the Day:</ion-card-subtitle>\r\n      <ion-card-title>{{fullName}}</ion-card-title>\r\n    </ion-card-header> \r\n         \r\n  </ion-card>\r\n\r\n  <ion-grid>\r\n    <ion-row>\r\n       <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n       <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n       <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n       <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n\r\n</ion-content>\r\n  "
 
 /***/ }),
 
@@ -223,6 +223,7 @@ var HomeResultsPage = /** @class */ (function () {
         this.toastCtrl = toastCtrl;
         this.storage = storage;
         this.images = [];
+        this.ishidden = false;
     }
     HomeResultsPage.prototype.takePicture = function () {
         this.router.navigate(['/approve-photo']);
@@ -232,10 +233,14 @@ var HomeResultsPage = /** @class */ (function () {
         var _this = this;
         this.storage.get('session_storage').then(function (res) {
             _this.username = res.username;
+            _this.points = res.points;
+            _this.userId = res.userId;
+            console.log(res);
         });
         this.storage.get('selected_user').then(function (res) {
             _this.userPhoto = "http://spontadeal.com/stalkify/upload/uploads/" + res.userPhoto;
             _this.fullName = res.fullName;
+            _this.selectedUserId = res.userId;
         });
     };
     // Log out on click
@@ -276,6 +281,9 @@ var HomeResultsPage = /** @class */ (function () {
                 }
             });
         });
+    };
+    HomeResultsPage.prototype.approvePage = function () {
+        this.router.navigate(['/approve']);
     };
     HomeResultsPage = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

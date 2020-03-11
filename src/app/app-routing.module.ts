@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'home-results', loadChildren: './pages/home-results/home-results.module#HomeResultsPageModule' },
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'approve-photo', loadChildren: './pages/approve-photo/approve-photo.module#ApprovePhotoPageModule' },
-
+  { path: 'approve', loadChildren: './pages/approve/approve.module#ApprovePageModule' },
 ];
 
 @NgModule({

@@ -861,6 +861,10 @@ var map = {
 		"./src/app/pages/approve-photo/approve-photo.module.ts",
 		"pages-approve-photo-approve-photo-module"
 	],
+	"./pages/approve/approve.module": [
+		"./src/app/pages/approve/approve.module.ts",
+		"pages-approve-approve-module"
+	],
 	"./pages/edit-profile/edit-profile.module": [
 		"./src/app/pages/edit-profile/edit-profile.module.ts",
 		"edit-profile-edit-profile-module"
@@ -933,6 +937,7 @@ var routes = [
     { path: 'home-results', loadChildren: './pages/home-results/home-results.module#HomeResultsPageModule' },
     { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
     { path: 'approve-photo', loadChildren: './pages/approve-photo/approve-photo.module#ApprovePhotoPageModule' },
+    { path: 'approve', loadChildren: './pages/approve/approve.module#ApprovePageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -957,7 +962,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\r\n  <ion-split-pane>\r\n    <ion-menu>\r\n      <ion-header>\r\n        \r\n      </ion-header>\r\n\r\n      \r\n    </ion-menu>\r\n    <ion-router-outlet main></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>\r\n"
+module.exports = "<ion-app>\r\n  <ion-split-pane>\r\n    <ion-menu>\r\n      <ion-header>\r\n        \r\n      </ion-header>\r\n \r\n      \r\n      \r\n    </ion-menu>\r\n    <ion-router-outlet main></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>\r\n"
 
 /***/ }),
 

@@ -16,13 +16,25 @@
     overflow: hidden;
   }
 
+  .margin-left{
+    margin-left: 3%;
+  }
+
   .crop-500{
     max-height: 500px !important;
     overflow: hidden;
   }
 
+  .crop-none{
+    min-height: 100% !important;   
+  }
+
   .no-padding{
     padding: 0px !important;
+  }
+
+  .no-margin{
+    margin: 0px !important;
   }
 
   .primary-color{

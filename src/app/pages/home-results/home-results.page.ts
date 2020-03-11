@@ -22,6 +22,11 @@ export class HomeResultsPage {
   username: string;
   userPhoto: string;
   fullName: string;
+  points: string;
+  userId: string;
+  selectedUserId: string;
+  ishidden: boolean = false;
+
 
   constructor(
     public modalCtrl: ModalController,
@@ -41,12 +46,16 @@ export class HomeResultsPage {
   ionViewWillEnter() {    
     this.storage.get('session_storage').then((res)=>{      
       this.username = res.username;
+      this.points = res.points;
+      this.userId = res.userId;
+      console.log(res);
+      
     })
     this.storage.get('selected_user').then((res)=>{      
       this.userPhoto = "http://spontadeal.com/stalkify/upload/uploads/" + res.userPhoto;
       this.fullName = res.fullName;
-    })        
-    
+      this.selectedUserId = res.userId;     
+    })  
   }
 
   // Log out on click
@@ -67,6 +76,10 @@ export class HomeResultsPage {
       componentProps: { value: image }
     });
     return await modal.present();
+  }
+
+  approvePage(){
+    this.router.navigate(['/approve']);
   }
   
 }

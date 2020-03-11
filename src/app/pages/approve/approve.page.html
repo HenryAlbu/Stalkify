@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>About</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let approveData of approveDatas">
+    <div class="crop-none">
+      <img src="http://www.spontadeal.com/stalkify/upload/uploadsSpotted/{{approveData.spottedPhoto}}" />
+    </div>
+
+    <!-- <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>Madison, WI</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+    </ion-card-content>-->
+    <ion-button expand="full" color="primary" (click)="prosesApproval(approveData, approveData.spottedPhoto, approveData.userId, 2)">This is a selfe shot (+5 pts)</ion-button>
+    <ion-button expand="full" color="secondary" (click)="prosesApproval(approveData, approveData.spottedPhoto, approveData.userId, 1)">This is a creeper shot (+1 pts)</ion-button>
+    <ion-button expand="full" color="danger" (click)="prosesApproval(approveData, approveData.spottedPhoto, approveData.userId, 0)">This is not me (0 pts)</ion-button>
+  </ion-card>
+
+
+
+  <ion-infinite-scroll (ionInfinite)="loadData($event)">
+	    <ion-infinite-scroll-content
+	      loadingSpinner="bubbles"
+	      loadingText="Loading more data...">
+	    </ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
+
+</ion-content>

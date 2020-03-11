@@ -62,7 +62,7 @@ var ApprovePhotoPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>Approve Photo</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <div class=\"bg-profile\" *ngFor=\"let img of images; index as pos\" text-center padding>\r\n     <img [src]=\"img.path\" /> \r\n  </div>\r\n\r\n  <ion-card class=\"bg-white\" no-margin>\r\n    <ion-card-content>\r\n            \r\n      <p margin-bottom>\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum odio placeat incidunt nesciunt atque ratione\r\n        quisquam, fugit omnis maxime adipisci excepturi dignissimos aliquam asperiores itaque unde sequi? Minus, quia,\r\n        dolore?\r\n      </p>\r\n      \r\n      <p>\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum odio placeat incidunt nesciunt atque ratione\r\n        quisquam, fugit omnis maxime adipisci excepturi dignissimos aliquam asperiores itaque unde sequi? Minus, quia,\r\n        dolore?\r\n      </p>\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>Approve Photo</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n<ion-card>\r\n  <div class=\"crop-500\" *ngFor=\"let img of images; index as pos\" text-center padding>\r\n     <img [src]=\"img.path\" /> \r\n  </div>\r\n</ion-card>\r\n\r\n   \r\n    \r\n   \r\n\r\n  <ion-card class=\"bg-white\" no-margin>\r\n    <ion-card-content>\r\n            \r\n      <p margin-bottom>\r\n        Photo will be sent to stalkee for confirmation. Points will be given after photo is approved.\r\n      </p>      \r\n     \r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n</ion-content>\r\n<ion-footer>  \r\n  <ion-grid class=\"no-padding\">\r\n        <ion-row>\r\n          <ion-col col-6 class=\"black-color\" *ngFor=\"let img of images; index as pos\">\r\n            <ion-button fill=\"clear\" expand=\"full\" color=\"secondary\" (click)=\"prosesSpotted(img)\" >\r\n      <ion-icon slot=\"start\" name=\"thumbs-up\"></ion-icon>\r\n      Submit</ion-button>\r\n          </ion-col> \r\n          <ion-col col-6 class=\"primary-color\">\r\n            <ion-button fill=\"clear\" expand=\"full\" color=\"secondary\" (click)=\"selectImage()\">\r\n      <ion-icon slot=\"start\" name=\"camera\"></ion-icon>\r\n      Retake</ion-button>\r\n          </ion-col>\r\n        </ion-row>\r\n  </ion-grid>\r\n</ion-footer>\r\n"
 
 /***/ }),
 
@@ -175,6 +175,10 @@ var ApprovePhotoPage = /** @class */ (function () {
     ApprovePhotoPage.prototype.ngOnInit = function () {
     };
     ApprovePhotoPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        this.storage.get('session_storage').then(function (res) {
+            _this.username = res.username;
+        });
         this.selectImage();
     };
     // TAKE PHOTO CODE
@@ -223,6 +227,7 @@ var ApprovePhotoPage = /** @class */ (function () {
     ApprovePhotoPage.prototype.selectImage = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
+                this.images = [];
                 this.takePicture(this.camera.PictureSourceType.CAMERA);
                 return [2 /*return*/];
             });
@@ -231,11 +236,10 @@ var ApprovePhotoPage = /** @class */ (function () {
     ApprovePhotoPage.prototype.takePicture = function (sourceType) {
         var _this = this;
         var options = {
-            quality: 100,
+            quality: 70,
             sourceType: sourceType,
-            targetHeight: 100,
-            targetWidth: 100,
-            cameraDirection: 1,
+            targetWidth: 500,
+            cameraDirection: 0,
             saveToPhotoAlbum: false,
             correctOrientation: true
         };
@@ -257,7 +261,7 @@ var ApprovePhotoPage = /** @class */ (function () {
     };
     ApprovePhotoPage.prototype.createFileName = function () {
         var d = new Date(), n = d.getTime(), newFileName = n + ".jpg";
-        this.userPhoto = newFileName;
+        this.spottedPhoto = newFileName;
         return newFileName;
     };
     ApprovePhotoPage.prototype.copyFileToLocalDir = function (namePath, currentName, newFileName) {
@@ -355,7 +359,7 @@ var ApprovePhotoPage = /** @class */ (function () {
                         return [4 /*yield*/, loading.present()];
                     case 2:
                         _a.sent();
-                        this.http.post("http://spontadeal.com/stalkify/upload/upload.php", formData)
+                        this.http.post("http://spontadeal.com/stalkify/upload/uploadSpotted.php", formData)
                             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["finalize"])(function () {
                             loading.dismiss();
                         }))
@@ -369,6 +373,51 @@ var ApprovePhotoPage = /** @class */ (function () {
                         });
                         return [2 /*return*/];
                 }
+            });
+        });
+    };
+    // Makes sure all feilds are filled in register form
+    // If form is ok, send data to api
+    ApprovePhotoPage.prototype.prosesSpotted = function (imgEntry) {
+        return __awaiter(this, void 0, void 0, function () {
+            var body;
+            var _this = this;
+            return __generator(this, function (_a) {
+                this.startUpload(imgEntry);
+                body = {
+                    username: this.username,
+                    spottedPhoto: this.spottedPhoto,
+                    aksi: 'sendSpotted'
+                };
+                this.postPvdr.postData(body, 'proses-api.php').subscribe(function (data) { return __awaiter(_this, void 0, void 0, function () {
+                    var alertmsg, toast, toast;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                alertmsg = data.msg;
+                                if (!data.success) return [3 /*break*/, 2];
+                                this.router.navigate(['/tabs/home']);
+                                return [4 /*yield*/, this.toastCtrl.create({
+                                        message: 'submission successful',
+                                        duration: 2000
+                                    })];
+                            case 1:
+                                toast = _a.sent();
+                                toast.present();
+                                return [3 /*break*/, 4];
+                            case 2: return [4 /*yield*/, this.toastCtrl.create({
+                                    message: alertmsg,
+                                    duration: 2000
+                                })];
+                            case 3:
+                                toast = _a.sent();
+                                toast.present();
+                                _a.label = 4;
+                            case 4: return [2 /*return*/];
+                        }
+                    });
+                }); });
+                return [2 /*return*/];
             });
         });
     };

@@ -95,10 +95,10 @@ export class ApprovePhotoPage implements OnInit {
    
   takePicture(sourceType: PictureSourceType) {
       var options: CameraOptions = {
-          quality: 100,
+          quality: 70,
           sourceType: sourceType,     
           targetWidth: 500,
-          cameraDirection: 1,
+          cameraDirection: 0,
           saveToPhotoAlbum: false,
           correctOrientation: true
       };
