@@ -49,6 +49,10 @@ export class HomeResultsPage {
       this.points = res.points;
       this.userId = res.userId;
       console.log(res);
+      // Hides button if not selected user
+      if (res.userId != res.selectedUserId){
+        this.ishidden = true;
+      }
       
     })
     this.storage.get('selected_user').then((res)=>{      

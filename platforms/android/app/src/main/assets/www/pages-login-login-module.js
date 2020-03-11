@@ -153,6 +153,58 @@ var LoginPage = /** @class */ (function () {
     }
     LoginPage.prototype.ngOnInit = function () {
     };
+    LoginPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        this.getSelected();
+        this.storage.get('session_storage').then(function (res) {
+            if (res != null) {
+                _this.getSession();
+            }
+        });
+    };
+    LoginPage.prototype.getSelected = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var body;
+            var _this = this;
+            return __generator(this, function (_a) {
+                body = {
+                    aksi: 'getSelected'
+                };
+                this.postPvdr.postData(body, 'proses-api.php').subscribe(function (data) { return __awaiter(_this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        this.storage.set('selected_user', data.result);
+                        return [2 /*return*/];
+                    });
+                }); });
+                return [2 /*return*/];
+            });
+        });
+    };
+    LoginPage.prototype.getSession = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                this.storage.get('session_storage').then(function (res) {
+                    var body = {
+                        username: res.username,
+                        aksi: 'set_session'
+                    };
+                    _this.postPvdr.postData(body, 'proses-api.php').subscribe(function (data) { return __awaiter(_this, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            if (data.success) {
+                                console.log('SUCK');
+                                // Create session storage
+                                this.storage.set('session_storage', data.result);
+                                this.router.navigate(['/tabs/home']);
+                            }
+                            return [2 /*return*/];
+                        });
+                    }); });
+                });
+                return [2 /*return*/];
+            });
+        });
+    };
     // // //
     LoginPage.prototype.formRegister = function () {
         this.router.navigate(['/register']);

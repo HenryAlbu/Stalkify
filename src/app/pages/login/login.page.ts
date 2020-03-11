@@ -26,6 +26,45 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewWillEnter() {
+    this.getSelected();
+    this.storage.get('session_storage').then((res) => {
+      if (res != null) {
+        this.getSession();        
+      }
+    })
+  }
+
+  async getSelected() {
+    let body = {
+      aksi: 'getSelected'
+    };
+    this.postPvdr.postData(body, 'proses-api.php').subscribe(async data => {
+      this.storage.set('selected_user', data.result);
+
+    });
+  }
+
+  async getSession() {
+
+    this.storage.get('session_storage').then((res) => {      
+      let body = {
+        username: res.username,
+        aksi: 'set_session'
+      };      
+        this.postPvdr.postData(body, 'proses-api.php').subscribe(async data => {
+          if (data.success) {
+            console.log('SUCK');
+            // Create session storage
+            this.storage.set('session_storage', data.result);
+            this.router.navigate(['/tabs/home']);            
+          }
+        });
+      
+    })
+
+  }
+
   // // //
   formRegister() {
     this.router.navigate(['/register']);
