@@ -237,6 +237,10 @@ var HomeResultsPage = /** @class */ (function () {
             _this.points = res.points;
             _this.userId = res.userId;
             console.log(res);
+            // Hides button if not selected user
+            if (res.userId != res.selectedUserId) {
+                _this.ishidden = true;
+            }
         });
         this.storage.get('selected_user').then(function (res) {
             _this.userPhoto = "http://spontadeal.com/stalkify/upload/uploads/" + res.userPhoto;

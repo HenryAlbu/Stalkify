@@ -1062,11 +1062,6 @@ var AppComponent = /** @class */ (function () {
             _this.getSelected();
             _this.splashScreen.hide();
         }).catch(function () { });
-        this.storage.get('session_storage').then(function (res) {
-            if (res != null) {
-                _this.router.navigate(['/tabs/home']);
-            }
-        });
     };
     // GET SELECTED USER
     AppComponent.prototype.getSelected = function () {
