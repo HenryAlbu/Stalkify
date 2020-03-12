@@ -29,7 +29,7 @@ export class HomeResultsPage {
   selectedUserId: string;
   ishidden: boolean = false;
   approveDatas: any = [];
-  limit: number = 3;
+  limit: number = 6;
   start: number = 0;
 
 
@@ -48,9 +48,8 @@ export class HomeResultsPage {
     this.router.navigate(['/approve-photo']);
   }
 
-  // Just to display username on login
-  ionViewWillEnter() { 
-    this.loadApproveData();   
+  ngOnInit() {
+    this.loadApproveData(); 
     this.storage.get('session_storage').then((res)=>{      
       this.username = res.username;
       this.points = res.points;
@@ -61,7 +60,20 @@ export class HomeResultsPage {
         this.ishidden = true;
       }
       
-    })
+    })  
+  }
+
+  loadData(event:any){
+  	this.start += this.limit;
+  	setTimeout(() =>{
+  	this.loadApproveData().then(()=>{
+  		event.target.complete();
+  	});
+  	}, 500);
+  }
+
+  // Just to display username on login
+  ionViewWillEnter() {     
     this.storage.get('selected_user').then((res)=>{      
       this.userPhoto = "http://spontadeal.com/stalkify/upload/uploads/" + res.userPhoto;
       this.fullName = res.fullName;

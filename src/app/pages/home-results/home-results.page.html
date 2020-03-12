@@ -41,11 +41,22 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col size="6" *ngFor="let approveData of approveDatas">
-        <div><img (click)="zoomPhoto(approveData.spottedPhoto, approveData.fullName)" src="http://www.spontadeal.com/stalkify/upload/uploadsSpotted/{{approveData.spottedPhoto}}" /></div>
+      <ion-col size="4" *ngFor="let approveData of approveDatas">
+        <ion-card class="home-thumb">            
+            <div class="crop-home">
+              <img (click)="zoomPhoto(approveData.spottedPhoto, approveData.fullName)" src="http://www.spontadeal.com/stalkify/upload/uploadsSpotted/{{approveData.spottedPhoto}}" />
+            </div>                              
+        </ion-card>       
       </ion-col>               
     </ion-row>    
   </ion-grid>
 
-</ion-content>
+  <ion-infinite-scroll (ionInfinite)="loadData($event)">
+	    <ion-infinite-scroll-content
+	      loadingSpinner="crescent"
+	      loadingText="Checking for new images...">
+	    </ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
+</ion-content> 
   

@@ -11,9 +11,30 @@
 
 
 // +++++++++++++++++++++++++++ GENERAL STYLES FOR ALL PAGES ++++++++++++++++++++++++++++++++++++
+  .home-thumb{
+    margin: 0px;
+  }
+
   .crop{
-    max-height: 200px !important;
+    max-height: 250px !important;
     overflow: hidden;
+  }
+
+  .crop img{
+    display: block;
+    bottom: 50px;
+    position: relative;
+  }
+
+  .crop-home{
+    max-height: 130px !important;
+    overflow: hidden;
+  }
+
+  .crop-home img{
+   display: block;
+   margin-top: -40%;
+   position: relative;
   }
 
   .margin-left{
@@ -50,7 +71,7 @@
   }
 
   ion-fab{
-   margin-top:6%;   
+   margin-top:13%;   
   }
 
   ion-fab-button{
