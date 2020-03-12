@@ -38,6 +38,9 @@
     },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.ionictheme.ionic4start"
+    },
+    "com-sarriaroman-photoviewer": {
+      "PACKAGE_NAME": "com.ionictheme.ionic4start"
     }
   },
   "dependent_plugins": {}

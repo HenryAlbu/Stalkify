@@ -13,7 +13,6 @@ export class ApprovePage implements OnInit {
   approveDatas: any = [];
   limit: number = 3;
   start: number = 0;
-  customers: any = [];
   constructor(
     private router: Router,
   	private postPvdr: PostProvider,   
@@ -76,11 +75,7 @@ export class ApprovePage implements OnInit {
     this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{
       var alertmsg = data.msg;
       if(data.success){               
-        //const toast = await this.toastCtrl.create({
-        //  message: 'Register successful',
-        //  duration: 2000
-        //});
-        //toast.present();
+        
       }else{
         const toast = await this.toastCtrl.create({
           message: alertmsg,

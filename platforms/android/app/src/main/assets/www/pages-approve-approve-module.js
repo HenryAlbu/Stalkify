@@ -147,7 +147,6 @@ var ApprovePage = /** @class */ (function () {
         this.approveDatas = [];
         this.limit = 3;
         this.start = 0;
-        this.customers = [];
     }
     ApprovePage.prototype.ngOnInit = function () {
     };
