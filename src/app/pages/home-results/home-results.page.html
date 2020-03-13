@@ -35,68 +35,28 @@
     <ion-card-header>
       <ion-card-subtitle>User of the Day:</ion-card-subtitle>
       <ion-card-title>{{fullName}}</ion-card-title>
-    </ion-card-header> 
-         
+    </ion-card-header>         
   </ion-card>
 
-  <ion-grid>
+
+  <ion-grid>    
     <ion-row>
-       <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-    </ion-row>
-    <ion-row>
-       <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-    </ion-row>
-    <ion-row>
-       <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-    </ion-row>
-    <ion-row>
-       <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
-          <ion-col>
-            <div><img src="assets/img/100.png" /></div>
-          </ion-col>
+      <ion-col size="4" *ngFor="let approveData of approveDatas">
+        <ion-card class="home-thumb">            
+            <div class="crop-home">
+              <img (click)="zoomPhoto(approveData.spottedPhoto, approveData.fullName)" src="http://www.spontadeal.com/stalkify/upload/uploadsSpotted/{{approveData.spottedPhoto}}" />
+            </div>                              
+        </ion-card>       
+      </ion-col>               
     </ion-row>
   </ion-grid>
 
-</ion-content>
+  <ion-infinite-scroll threshold="5px" (ionInfinite)="loadData($event)">
+	    <ion-infinite-scroll-content
+	      loadingSpinner="crescent"
+	      loadingText="Checking for new images...">
+	    </ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
+</ion-content> 
   

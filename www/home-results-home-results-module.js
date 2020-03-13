@@ -136,7 +136,7 @@ var HomeResultsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">    \r\n    <ion-title>\r\n        <ion-text color=\"light\">\r\n          <ion-text color=\"light\" class=\"fw700\">My Points: {{points}}</ion-text>\r\n        </ion-text>\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button size=\"small\" shape=\"round\" color=\"medium\" (click)=\"prosesLogout()\">\r\n        <ion-icon name=\"exit\"></ion-icon>\r\n      </ion-button>     \r\n    </ion-buttons>\r\n  </ion-toolbar> \r\n</ion-header>\r\n\r\n\r\n\r\n<ion-content fullscreen>  \r\n  <section [hidden]=ishidden class=\"full-width\">    \r\n    <ion-button (click)=\"approvePage()\" class=\"no-margin\" expand=\"full\" color=\"secondary\">APPROVE PHOTOS \r\n    <ion-badge slot=\"end\" color=\"primary\" class=\"margin-left\">12</ion-badge></ion-button>\r\n  </section>  \r\n\r\n\r\n  <!-- USER SELECTED PHOTO -->\r\n  <ion-card>\r\n    <ion-fab vertical=\"center\" horizontal=\"end\" slot=\"fixed\" edge>\r\n      <ion-fab-button  (click)=\"takePicture()\" size=\"large\" color=\"danger\">\r\n        <ion-icon name=\"camera\"></ion-icon>\r\n      </ion-fab-button>\r\n    </ion-fab>\r\n    <div class=\"crop\">\r\n      <img (click)=\"presentImage(userPhoto)\" [src]=\"userPhoto\" />\r\n    </div>\r\n    <ion-card-header>\r\n      <ion-card-subtitle>User of the Day:</ion-card-subtitle>\r\n      <ion-card-title>{{fullName}}</ion-card-title>\r\n    </ion-card-header> \r\n         \r\n  </ion-card>\r\n\r\n  <ion-grid>\r\n    <ion-row>\r\n       <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n       <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n       <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n       <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n          <ion-col>\r\n            <div><img src=\"assets/img/100.png\" /></div>\r\n          </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n\r\n</ion-content>\r\n  "
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">    \r\n    <ion-title>\r\n        <ion-text color=\"light\">\r\n          <ion-text color=\"light\" class=\"fw700\">My Points: {{points}}</ion-text>\r\n        </ion-text>\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button size=\"small\" shape=\"round\" color=\"medium\" (click)=\"prosesLogout()\">\r\n        <ion-icon name=\"exit\"></ion-icon>\r\n      </ion-button>     \r\n    </ion-buttons>\r\n  </ion-toolbar> \r\n</ion-header>\r\n\r\n\r\n\r\n<ion-content fullscreen>  \r\n  <section [hidden]=ishidden class=\"full-width\">    \r\n    <ion-button (click)=\"approvePage()\" class=\"no-margin\" expand=\"full\" color=\"secondary\">APPROVE PHOTOS \r\n    <ion-badge slot=\"end\" color=\"primary\" class=\"margin-left\">12</ion-badge></ion-button>\r\n  </section>  \r\n\r\n\r\n  <!-- USER SELECTED PHOTO -->\r\n  <ion-card>\r\n    <ion-fab vertical=\"center\" horizontal=\"end\" slot=\"fixed\" edge>\r\n      <ion-fab-button  (click)=\"takePicture()\" size=\"large\" color=\"danger\">\r\n        <ion-icon name=\"camera\"></ion-icon>\r\n      </ion-fab-button>\r\n    </ion-fab>\r\n    <div class=\"crop\">\r\n      <img (click)=\"presentImage(userPhoto)\" [src]=\"userPhoto\" />\r\n    </div>\r\n    <ion-card-header>\r\n      <ion-card-subtitle>User of the Day:</ion-card-subtitle>\r\n      <ion-card-title>{{fullName}}</ion-card-title>\r\n    </ion-card-header>         \r\n  </ion-card>\r\n\r\n\r\n  <ion-grid>    \r\n    <ion-row>\r\n      <ion-col size=\"4\" *ngFor=\"let approveData of approveDatas\">\r\n        <ion-card class=\"home-thumb\">            \r\n            <div class=\"crop-home\">\r\n              <img (click)=\"zoomPhoto(approveData.spottedPhoto, approveData.fullName)\" src=\"http://www.spontadeal.com/stalkify/upload/uploadsSpotted/{{approveData.spottedPhoto}}\" />\r\n            </div>                              \r\n        </ion-card>       \r\n      </ion-col>               \r\n    </ion-row>\r\n  </ion-grid>\r\n\r\n  <ion-infinite-scroll threshold=\"5px\" (ionInfinite)=\"loadData($event)\">\r\n\t    <ion-infinite-scroll-content\r\n\t      loadingSpinner=\"crescent\"\r\n\t      loadingText=\"Checking for new images...\">\r\n\t    </ion-infinite-scroll-content>\r\n\t</ion-infinite-scroll>\r\n\r\n</ion-content> \r\n  "
 
 /***/ }),
 
@@ -165,7 +165,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
-/* harmony import */ var _modal_image_image_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../modal/image/image.page */ "./src/app/pages/modal/image/image.page.ts");
+/* harmony import */ var _providers_post_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../providers/post-provider */ "./src/providers/post-provider.ts");
+/* harmony import */ var _ionic_native_photo_viewer_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/photo-viewer/ngx */ "./node_modules/@ionic-native/photo-viewer/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -214,23 +215,28 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-// Modals
 
-var STORAGE_KEY = 'my_images';
+
+// Modals
 var HomeResultsPage = /** @class */ (function () {
-    function HomeResultsPage(modalCtrl, router, toastCtrl, storage) {
+    function HomeResultsPage(modalCtrl, router, toastCtrl, storage, postPvdr, photoViewer) {
         this.modalCtrl = modalCtrl;
         this.router = router;
         this.toastCtrl = toastCtrl;
         this.storage = storage;
+        this.postPvdr = postPvdr;
+        this.photoViewer = photoViewer;
         this.images = [];
         this.ishidden = false;
+        this.approveDatas = [];
+        this.limit = 4;
+        this.start = 0;
+        this.total = 0;
     }
     HomeResultsPage.prototype.takePicture = function () {
         this.router.navigate(['/approve-photo']);
     };
-    // Just to display username on login
-    HomeResultsPage.prototype.ionViewWillEnter = function () {
+    HomeResultsPage.prototype.ngOnInit = function () {
         var _this = this;
         this.storage.get('session_storage').then(function (res) {
             _this.username = res.username;
@@ -242,6 +248,34 @@ var HomeResultsPage = /** @class */ (function () {
                 _this.ishidden = true;
             }
         });
+    };
+    HomeResultsPage.prototype.loadData = function (event) {
+        var _this = this;
+        //this.eventLog = event;
+        console.log(this.eventLog);
+        this.start += this.limit;
+        setTimeout(function () {
+            _this.loadApproveData().then(function () {
+                event.target.complete();
+                if (_this.total == 0) {
+                    event.target.disabled = true;
+                }
+            });
+        }, 1000);
+    };
+    HomeResultsPage.prototype.loadDataRev = function () {
+        var _this = this;
+        this.start += this.limit;
+        setTimeout(function () {
+            _this.loadApproveData().then(function () {
+            });
+        }, 500);
+    };
+    // Just to display username on login
+    HomeResultsPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        this.approveDatas = [];
+        this.loadApproveData();
         this.storage.get('selected_user').then(function (res) {
             _this.userPhoto = "http://spontadeal.com/stalkify/upload/uploads/" + res.userPhoto;
             _this.fullName = res.fullName;
@@ -272,23 +306,45 @@ var HomeResultsPage = /** @class */ (function () {
     // Shows popup of main image
     HomeResultsPage.prototype.presentImage = function (image) {
         return __awaiter(this, void 0, void 0, function () {
-            var modal;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.modalCtrl.create({
-                            component: _modal_image_image_page__WEBPACK_IMPORTED_MODULE_4__["ImagePage"],
-                            componentProps: { value: image }
-                        })];
-                    case 1:
-                        modal = _a.sent();
-                        return [4 /*yield*/, modal.present()];
-                    case 2: return [2 /*return*/, _a.sent()];
-                }
+                this.photoViewer.show(image);
+                return [2 /*return*/];
             });
         });
     };
     HomeResultsPage.prototype.approvePage = function () {
-        this.router.navigate(['/approve']);
+        this.router.navigate(['tabs/approve']);
+    };
+    // SHOW GALLERY STUFF
+    HomeResultsPage.prototype.loadApproveData = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            var body = {
+                aksi: 'getdata-Homepage',
+                limit: _this.limit,
+                start: _this.start,
+            };
+            _this.postPvdr.postData(body, 'proses-api.php').subscribe(function (data) {
+                _this.total = data.total;
+                console.log(_this.total);
+                for (var _i = 0, _a = data.result; _i < _a.length; _i++) {
+                    var approveData = _a[_i];
+                    _this.approveDatas.push(approveData);
+                }
+                resolve(true);
+            });
+        });
+    };
+    HomeResultsPage.prototype.zoomPhoto = function (image, name) {
+        var options = {
+            share: true,
+            closeButton: true,
+            copyToReference: true,
+            headers: '',
+            piccasoOptions: {} // If this is not provided, an exception will be triggered
+        };
+        console.log(image);
+        this.photoViewer.show("http://www.spontadeal.com/stalkify/upload/uploadsSpotted/" + image, "Taken by: " + name, options);
     };
     HomeResultsPage = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -299,7 +355,9 @@ var HomeResultsPage = /** @class */ (function () {
         __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ToastController"],
-            _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]])
+            _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"],
+            _providers_post_provider__WEBPACK_IMPORTED_MODULE_4__["PostProvider"],
+            _ionic_native_photo_viewer_ngx__WEBPACK_IMPORTED_MODULE_5__["PhotoViewer"]])
     ], HomeResultsPage);
     return HomeResultsPage;
 }());

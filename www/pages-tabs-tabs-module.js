@@ -50,6 +50,10 @@ var routes = [
                 path: 'board',
                 loadChildren: '../about/about.module#AboutPageModule'
             },
+            {
+                path: 'approve',
+                loadChildren: '../approve/approve.module#ApprovePageModule'
+            },
         ]
     }
 ];
@@ -81,7 +85,7 @@ var TabsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-tabs>\r\n  <ion-tab-bar slot=\"bottom\">\r\n\r\n    <ion-tab-button tab=\"home\">\r\n      <ion-icon name=\"calendar\"></ion-icon>\r\n      <ion-label>Home</ion-label>      \r\n    </ion-tab-button>\r\n\r\n    \r\n    <ion-tab-button tab=\"board\">\r\n      <ion-icon name=\"stats\"></ion-icon>\r\n      <ion-label>Leader Board</ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"profile\">\r\n      <ion-icon name=\"person\"></ion-icon>\r\n      <ion-label>Profile</ion-label>\r\n    </ion-tab-button>\r\n\r\n  </ion-tab-bar>\r\n</ion-tabs>"
+module.exports = "<ion-tabs>\r\n  <ion-tab-bar slot=\"bottom\">\r\n\r\n    <ion-tab-button tab=\"home\">\r\n      <ion-icon name=\"calendar\"></ion-icon>\r\n      <ion-label>Home</ion-label>      \r\n    </ion-tab-button>\r\n\r\n    \r\n    <ion-tab-button tab=\"board\">\r\n      <ion-icon name=\"stats\"></ion-icon>\r\n      <ion-label>Leader Board</ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"profile\">\r\n      <ion-icon name=\"person\"></ion-icon>\r\n      <ion-label>Profile</ion-label>\r\n    </ion-tab-button>\r\n\r\n    \r\n\r\n  </ion-tab-bar>\r\n</ion-tabs>"
 
 /***/ }),
 
