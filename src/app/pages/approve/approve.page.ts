@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { PostProvider } from '../../../providers/post-provider';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'app-approve',
@@ -16,14 +18,21 @@ export class ApprovePage implements OnInit {
   constructor(
     private router: Router,
   	private postPvdr: PostProvider,   
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public storage: Storage
   ) { }
 
   ngOnInit() {
+    
   }
 
   ionViewWillEnter(){
+    this.storage.set('approvePage', "1");
     this.loadApproveData();
+  }
+
+  prosesHome(){
+    this.router.navigate(['tabs/home/']);
   }
 
 

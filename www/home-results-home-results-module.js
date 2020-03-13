@@ -136,7 +136,7 @@ var HomeResultsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">    \r\n    <ion-title>\r\n        <ion-text color=\"light\">\r\n          <ion-text color=\"light\" class=\"fw700\">My Points: {{points}}</ion-text>\r\n        </ion-text>\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button size=\"small\" shape=\"round\" color=\"medium\" (click)=\"prosesLogout()\">\r\n        <ion-icon name=\"exit\"></ion-icon>\r\n      </ion-button>     \r\n    </ion-buttons>\r\n  </ion-toolbar> \r\n</ion-header>\r\n\r\n\r\n\r\n<ion-content fullscreen>  \r\n  <section [hidden]=ishidden class=\"full-width\">    \r\n    <ion-button (click)=\"approvePage()\" class=\"no-margin\" expand=\"full\" color=\"secondary\">APPROVE PHOTOS \r\n    <ion-badge slot=\"end\" color=\"primary\" class=\"margin-left\">12</ion-badge></ion-button>\r\n  </section>  \r\n\r\n\r\n  <!-- USER SELECTED PHOTO -->\r\n  <ion-card>\r\n    <ion-fab vertical=\"center\" horizontal=\"end\" slot=\"fixed\" edge>\r\n      <ion-fab-button  (click)=\"takePicture()\" size=\"large\" color=\"danger\">\r\n        <ion-icon name=\"camera\"></ion-icon>\r\n      </ion-fab-button>\r\n    </ion-fab>\r\n    <div class=\"crop\">\r\n      <img (click)=\"presentImage(userPhoto)\" [src]=\"userPhoto\" />\r\n    </div>\r\n    <ion-card-header>\r\n      <ion-card-subtitle>User of the Day:</ion-card-subtitle>\r\n      <ion-card-title>{{fullName}}</ion-card-title>\r\n    </ion-card-header> \r\n         \r\n  </ion-card>\r\n\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col size=\"4\" *ngFor=\"let approveData of approveDatas\">\r\n        <ion-card class=\"home-thumb\">            \r\n            <div class=\"crop-home\">\r\n              <img (click)=\"zoomPhoto(approveData.spottedPhoto, approveData.fullName)\" src=\"http://www.spontadeal.com/stalkify/upload/uploadsSpotted/{{approveData.spottedPhoto}}\" />\r\n            </div>                              \r\n        </ion-card>       \r\n      </ion-col>               \r\n    </ion-row>    \r\n  </ion-grid>\r\n\r\n  <ion-infinite-scroll (ionInfinite)=\"loadData($event)\">\r\n\t    <ion-infinite-scroll-content\r\n\t      loadingSpinner=\"crescent\"\r\n\t      loadingText=\"Checking for new images...\">\r\n\t    </ion-infinite-scroll-content>\r\n\t</ion-infinite-scroll>\r\n\r\n</ion-content> \r\n  "
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"primary\">    \r\n    <ion-title>\r\n        <ion-text color=\"light\">\r\n          <ion-text color=\"light\" class=\"fw700\">My Points: {{points}}</ion-text>\r\n        </ion-text>\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button size=\"small\" shape=\"round\" color=\"medium\" (click)=\"prosesLogout()\">\r\n        <ion-icon name=\"exit\"></ion-icon>\r\n      </ion-button>     \r\n    </ion-buttons>\r\n  </ion-toolbar> \r\n</ion-header>\r\n\r\n\r\n\r\n<ion-content fullscreen>  \r\n  <section [hidden]=ishidden class=\"full-width\">    \r\n    <ion-button (click)=\"approvePage()\" class=\"no-margin\" expand=\"full\" color=\"secondary\">APPROVE PHOTOS \r\n    <ion-badge slot=\"end\" color=\"primary\" class=\"margin-left\">12</ion-badge></ion-button>\r\n  </section>  \r\n\r\n\r\n  <!-- USER SELECTED PHOTO -->\r\n  <ion-card>\r\n    <ion-fab vertical=\"center\" horizontal=\"end\" slot=\"fixed\" edge>\r\n      <ion-fab-button  (click)=\"takePicture()\" size=\"large\" color=\"danger\">\r\n        <ion-icon name=\"camera\"></ion-icon>\r\n      </ion-fab-button>\r\n    </ion-fab>\r\n    <div class=\"crop\">\r\n      <img (click)=\"presentImage(userPhoto)\" [src]=\"userPhoto\" />\r\n    </div>\r\n    <ion-card-header>\r\n      <ion-card-subtitle>User of the Day:</ion-card-subtitle>\r\n      <ion-card-title>{{fullName}}</ion-card-title>\r\n    </ion-card-header>         \r\n  </ion-card>\r\n\r\n\r\n  <ion-grid>    \r\n    <ion-row>\r\n      <ion-col size=\"4\" *ngFor=\"let approveData of approveDatas\">\r\n        <ion-card class=\"home-thumb\">            \r\n            <div class=\"crop-home\">\r\n              <img (click)=\"zoomPhoto(approveData.spottedPhoto, approveData.fullName)\" src=\"http://www.spontadeal.com/stalkify/upload/uploadsSpotted/{{approveData.spottedPhoto}}\" />\r\n            </div>                              \r\n        </ion-card>       \r\n      </ion-col>               \r\n    </ion-row>\r\n  </ion-grid>\r\n\r\n  <ion-infinite-scroll threshold=\"5px\" (ionInfinite)=\"loadData($event)\">\r\n\t    <ion-infinite-scroll-content\r\n\t      loadingSpinner=\"crescent\"\r\n\t      loadingText=\"Checking for new images...\">\r\n\t    </ion-infinite-scroll-content>\r\n\t</ion-infinite-scroll>\r\n\r\n</ion-content> \r\n  "
 
 /***/ }),
 
@@ -231,13 +231,13 @@ var HomeResultsPage = /** @class */ (function () {
         this.approveDatas = [];
         this.limit = 4;
         this.start = 0;
+        this.total = 0;
     }
     HomeResultsPage.prototype.takePicture = function () {
         this.router.navigate(['/approve-photo']);
     };
     HomeResultsPage.prototype.ngOnInit = function () {
         var _this = this;
-        this.loadApproveData();
         this.storage.get('session_storage').then(function (res) {
             _this.username = res.username;
             _this.points = res.points;
@@ -251,16 +251,31 @@ var HomeResultsPage = /** @class */ (function () {
     };
     HomeResultsPage.prototype.loadData = function (event) {
         var _this = this;
+        //this.eventLog = event;
+        console.log(this.eventLog);
         this.start += this.limit;
         setTimeout(function () {
             _this.loadApproveData().then(function () {
                 event.target.complete();
+                if (_this.total == 0) {
+                    event.target.disabled = true;
+                }
+            });
+        }, 1000);
+    };
+    HomeResultsPage.prototype.loadDataRev = function () {
+        var _this = this;
+        this.start += this.limit;
+        setTimeout(function () {
+            _this.loadApproveData().then(function () {
             });
         }, 500);
     };
     // Just to display username on login
     HomeResultsPage.prototype.ionViewWillEnter = function () {
         var _this = this;
+        this.approveDatas = [];
+        this.loadApproveData();
         this.storage.get('selected_user').then(function (res) {
             _this.userPhoto = "http://spontadeal.com/stalkify/upload/uploads/" + res.userPhoto;
             _this.fullName = res.fullName;
@@ -298,7 +313,7 @@ var HomeResultsPage = /** @class */ (function () {
         });
     };
     HomeResultsPage.prototype.approvePage = function () {
-        this.router.navigate(['/approve']);
+        this.router.navigate(['tabs/approve']);
     };
     // SHOW GALLERY STUFF
     HomeResultsPage.prototype.loadApproveData = function () {
@@ -310,6 +325,8 @@ var HomeResultsPage = /** @class */ (function () {
                 start: _this.start,
             };
             _this.postPvdr.postData(body, 'proses-api.php').subscribe(function (data) {
+                _this.total = data.total;
+                console.log(_this.total);
                 for (var _i = 0, _a = data.result; _i < _a.length; _i++) {
                     var approveData = _a[_i];
                     _this.approveDatas.push(approveData);

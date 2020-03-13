@@ -29,6 +29,10 @@ const routes: Routes = [
         path: 'board',
         loadChildren: '../about/about.module#AboutPageModule'
       },
+      {
+        path: 'approve',
+        loadChildren: '../approve/approve.module#ApprovePageModule'
+      },
     ]
   } 
 ];

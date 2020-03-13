@@ -29,8 +29,12 @@ export class HomeResultsPage {
   selectedUserId: string;
   ishidden: boolean = false;
   approveDatas: any = [];
-  limit: number = 6;
+  limit: number = 4;
   start: number = 0;
+  total = 0;
+  value: any;
+  
+  
 
 
   constructor(
@@ -43,13 +47,13 @@ export class HomeResultsPage {
   ) {
 
   }
-
+ 
   takePicture(){
     this.router.navigate(['/approve-photo']);
   }
+  
 
-  ngOnInit() {
-    this.loadApproveData(); 
+  ngOnInit() {    
     this.storage.get('session_storage').then((res)=>{      
       this.username = res.username;
       this.points = res.points;
@@ -58,28 +62,39 @@ export class HomeResultsPage {
       // Hides button if not selected user
       if (res.userId != res.selectedUserId){
         this.ishidden = true;
-      }
-      
+      }      
     })  
   }
 
-  loadData(event:any){
+  loadData(event:any){ 
   	this.start += this.limit;
-  	setTimeout(() =>{
-  	this.loadApproveData().then(()=>{
-  		event.target.complete();
-  	});
-  	}, 500);
+  	setTimeout(() =>{    
+  	this.loadApproveData().then(()=>{      
+      event.target.complete();
+      if(this.total == 0){
+        event.target.disabled = true;
+      }      
+    });    
+    }, 1000);
   }
-
+  
   // Just to display username on login
   ionViewWillEnter() {     
+    this.storage.get('approvePage').then((res)=>{      
+      this.value = res;  
+      console.log(res)     
+      if (this.value == 1){        
+        this.approveDatas = [];
+        this.storage.set('approvePage', 0); 
+      }        
+    })
+    this.loadApproveData();
     this.storage.get('selected_user').then((res)=>{      
       this.userPhoto = "http://spontadeal.com/stalkify/upload/uploads/" + res.userPhoto;
       this.fullName = res.fullName;
       this.selectedUserId = res.userId;     
     })  
-  }
+  }  
 
   // Log out on click
   async prosesLogout(){
@@ -98,11 +113,11 @@ export class HomeResultsPage {
   }
 
   approvePage(){
-    this.router.navigate(['/approve']);
+    this.router.navigate(['tabs/approve']);
   }
   
   // SHOW GALLERY STUFF
-  loadApproveData(){
+  loadApproveData(){    
   	return new Promise(resolve => {
   		let body = {
         aksi : 'getdata-Homepage',
@@ -111,13 +126,17 @@ export class HomeResultsPage {
   		};
 
   		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
-  			for(let approveData of data.result){
+        this.total = data.total;
+        console.log(this.total);        
+  			for(let approveData of data.result){          
   				this.approveDatas.push(approveData);
   			}
   			resolve(true);
-  		});
+      });
   	});
   }
+
+ 
 
   zoomPhoto(image,name){
     var options = {

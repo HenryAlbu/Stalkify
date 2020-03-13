@@ -841,6 +841,10 @@ var map = {
 		"./src/app/pages/about/about.module.ts",
 		"about-about-module"
 	],
+	"../approve/approve.module": [
+		"./src/app/pages/approve/approve.module.ts",
+		"approve-approve-module"
+	],
 	"../edit-profile/edit-profile.module": [
 		"./src/app/pages/edit-profile/edit-profile.module.ts",
 		"edit-profile-edit-profile-module"
@@ -863,7 +867,7 @@ var map = {
 	],
 	"./pages/approve/approve.module": [
 		"./src/app/pages/approve/approve.module.ts",
-		"pages-approve-approve-module"
+		"approve-approve-module"
 	],
 	"./pages/edit-profile/edit-profile.module": [
 		"./src/app/pages/edit-profile/edit-profile.module.ts",
