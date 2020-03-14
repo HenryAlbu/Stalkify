@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
   <ion-toolbar color="primary">    
     <ion-title>
         <ion-text color="light">
@@ -11,15 +11,25 @@
       </ion-button>     
     </ion-buttons>
   </ion-toolbar> 
-</ion-header>
+</ion-header>-->
 
 
 
-<ion-content fullscreen>  
-  <section [hidden]=ishidden class="full-width">    
+
+
+<ion-content fullscreen> 
+<ion-grid class="points_bg">
+  <ion-row>
+    <ion-col>
+      Your points <br><span>{{points}}</span>
+    </ion-col>    
+  </ion-row>
+</ion-grid>
+
+ <!-- <section [hidden]=ishidden class="full-width">    
     <ion-button (click)="approvePage()" class="no-margin" expand="full" color="secondary">APPROVE PHOTOS 
     <ion-badge slot="end" color="primary" class="margin-left">12</ion-badge></ion-button>
-  </section>  
+  </section>-->  
 
 
   <!-- USER SELECTED PHOTO -->
