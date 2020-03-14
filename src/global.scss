@@ -11,6 +11,29 @@
 
 
 // +++++++++++++++++++++++++++ GENERAL STYLES FOR ALL PAGES ++++++++++++++++++++++++++++++++++++
+  .points_bg{
+    background: url("/assets/img/points_b.jpg") no-repeat;
+    height: 200px;
+    background-size: cover;
+    text-align: center;
+  }
+
+  .points_bg ion-row{
+    height: 100%;
+  }
+
+  .points_bg ion-row ion-col{
+    color: grey;
+    margin-top: 15%;
+  }
+
+  .points_bg ion-row ion-col span{
+    color:#fdd736;    
+    font-size: 45px;
+    font-weight: 600;
+    padding-top: 2%;
+  }
+
   .home-thumb{
     margin: 0px;
   }
@@ -103,6 +126,37 @@
   .bg-white {
     background-color: #fff;
   }
+
+  ion-content{
+    --background: #f1f1f1 !important;
+    //383838
+  }
+
+  ion-content .yellow{
+    --background: #f1f1f1 !important;
+    //383838
+  }
+
+  ion-tab-bar{
+    --background: #1a1a1a;
+    --ion-tabbar-color-selected: var(--ion-color-primary); 
+  }
+  ion-tab-bar ion-icon{
+    color: #fff;
+  }
+
+  ion-tab-button{
+    color: #fff;
+  }
+
+  ion-tab-button.tab-selected{ 
+    color: #c0a429;
+  }
+
+  ion-tab-button.tab-selected ion-icon{ 
+    color: #c0a429;
+  }
+  
 
   .bg-secondary {
       background-color: var(--ion-color-secondary);
