@@ -53,7 +53,8 @@ export class HomeResultsPage {
   }
   
 
-  ngOnInit() {    
+  ngOnInit() {   
+    this.loadApproveData();
     this.storage.get('session_storage').then((res)=>{      
       this.username = res.username;
       this.points = res.points;
@@ -82,13 +83,12 @@ export class HomeResultsPage {
   ionViewWillEnter() {     
     this.storage.get('approvePage').then((res)=>{      
       this.value = res;  
-      console.log(res)     
-      if (this.value == 1){        
+      if (this.value == 1){ 
+        console.log("Passed: " + this.value)       
         this.approveDatas = [];
         this.storage.set('approvePage', 0); 
       }        
-    })
-    this.loadApproveData();
+    })    
     this.storage.get('selected_user').then((res)=>{      
       this.userPhoto = "http://spontadeal.com/stalkify/upload/uploads/" + res.userPhoto;
       this.fullName = res.fullName;
