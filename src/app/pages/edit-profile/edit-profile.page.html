@@ -10,7 +10,7 @@
 <ion-content class="profile">
   <ion-card class="no-margin">
     <ion-card-content class="bg-profile">
-      <img src="assets/img/avatar.jpeg">
+      <ion-img [src]="photoLoc"></ion-img>
       <h1 class="fw500">Ian Something</h1>
       <ion-button icon-left color="secondary">
         <ion-icon name="photos"></ion-icon> 
@@ -25,28 +25,31 @@
           <ion-list margin-bottom>
             <ion-item>
               <ion-label color="dark" position="stacked">Full Name:</ion-label>
-              <ion-input inputmode="text" placeholder="Ex..: Joe Doe" value="Ian Something"></ion-input>
-            </ion-item>
-    
-            <ion-item>
-              <ion-label color="dark" position="stacked">Email:</ion-label>
-              <ion-input inputmode="email" placeholder="Ex.: joe@doe.com" value="ian@gmail.com"></ion-input>
+              <ion-input inputmode="text" value="{{fullname}}" [(ngModel)]="fullname"></ion-input>
             </ion-item>
 
             <ion-item>
+              <ion-label color="dark" position="stacked">Username:</ion-label>
+              <ion-input inputmode="email" value="{{username}}" [(ngModel)]="username"></ion-input>
+            </ion-item>
+            <ion-button size="large" expand="full" color="dark" (click)="updateUserInfo()" no-margin>Submit</ion-button>
+
+            <ion-title>Change Password</ion-title>
+            <ion-item>
               <ion-label color="dark" position="stacked">New Password:</ion-label>
-              <ion-input inputmode="text" placeholder=""></ion-input>
+              <ion-input inputmode="text" type="password" [(ngModel)]="password"></ion-input>
             </ion-item>
     
             <ion-item>
               <ion-label color="dark" position="stacked">Confirm New Password:</ion-label>
-              <ion-input inputmode="text" placeholder=""></ion-input>
+              <ion-input inputmode="text" type="password" [(ngModel)]="confirm_password"></ion-input>
             </ion-item>           
           </ion-list>
+          <ion-button size="large" expand="full" color="dark" (click)="updatePassword()" no-margin>Submit</ion-button>
           
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  <ion-button size="large" expand="full" color="dark" (click)="sendData()" no-margin>Submit</ion-button>
+  
 </ion-content>

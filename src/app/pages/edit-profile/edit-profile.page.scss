@@ -15,12 +15,12 @@
       color: #fff;
       text-align: center;
 
-      img {
+      ion-img {
         height: 128px;
         width: 128px;
         border-radius: 50%;
         border: solid 4px #fff;
-        display: inline;
+        display: inline-block;
         box-shadow: 0 0 28px rgba(255,255,255, .65);
       }
 
