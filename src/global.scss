@@ -132,6 +132,11 @@
     //383838
   }
 
+  ion-content .non{
+    --background: #292929 !important;
+    //383838
+  }
+  
   ion-content .yellow{
     --background: #f1f1f1 !important;
     //383838
@@ -227,7 +232,7 @@
   // +++++++++++++++++++++++++++ STYLE FOR LOGIN AND REGISTER PAGE ++++++++++++++++++++++++++++++++++++
   .auth-page {
     
-    --background: var(--ion-color-primary);
+    --background: var(--ion-color-primary) !important;
     
     ion-avatar  { 
       margin: auto;    

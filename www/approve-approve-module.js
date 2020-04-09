@@ -91,6 +91,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _providers_post_provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../providers/post-provider */ "./src/providers/post-provider.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -139,11 +140,13 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var ApprovePage = /** @class */ (function () {
-    function ApprovePage(router, postPvdr, toastCtrl) {
+    function ApprovePage(router, postPvdr, toastCtrl, storage) {
         this.router = router;
         this.postPvdr = postPvdr;
         this.toastCtrl = toastCtrl;
+        this.storage = storage;
         this.approveDatas = [];
         this.limit = 3;
         this.start = 0;
@@ -151,6 +154,7 @@ var ApprovePage = /** @class */ (function () {
     ApprovePage.prototype.ngOnInit = function () {
     };
     ApprovePage.prototype.ionViewWillEnter = function () {
+        this.storage.set('approvePage', "1");
         this.loadApproveData();
     };
     ApprovePage.prototype.prosesHome = function () {
@@ -232,7 +236,8 @@ var ApprovePage = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
             _providers_post_provider__WEBPACK_IMPORTED_MODULE_2__["PostProvider"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ToastController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ToastController"],
+            _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]])
     ], ApprovePage);
     return ApprovePage;
 }());
